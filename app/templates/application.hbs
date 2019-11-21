@@ -1,1 +1,20 @@
-{{outlet}}
+<div class="container">
+    <div class="menu">
+      {{#link-to "index"}}
+          <h1>
+              <em>Home</em>
+          </h1>
+      {{/link-to}}
+        <div class="links">
+          {{#link-to "account"}}
+              Account
+          {{/link-to}}
+          {{#link-to "stats"}}
+              Statistics
+          {{/link-to}}
+        </div>
+    </div>
+    <div class="body">
+      {{outlet}}
+    </div>
+</div>
