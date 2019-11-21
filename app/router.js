@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('stats');
   this.route('account');
   this.route('main');
+  this.route('transactions');
 });
 
 export default Router;
