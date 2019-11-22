@@ -1,3 +1,41 @@
-.container{
+$montserrat: 'Montserrat', sans-serif;
+$dark-green: #036D19;
+$green: #81C14B;
+$dark-vanilla: #CCC9A1;
+$cream: #F0FFCE;
+$pale-gold: #ECBA82;
 
+body{
+  font-family: $montserrat;
+  background-color: $cream;
+  margin: 0 auto;
+}
+
+.menu-box{
+  background-color: $dark-green;
+  padding: 2em;
+  display: grid;
+  grid-template-columns: 4fr 6fr 2fr;
+  a {
+    text-decoration: none;
+    color: $cream;
+    &:hover{
+      color: $pale-gold;
+    }
+  }
+}
+
+.menu{
+  display: flex;
+  justify-content: space-around;
+}
+
+.add-new-transaction{
+  grid-column: -1;
+}
+
+.body{
+  margin: 0 2em 0 2em;
+  background-color: white;
+  padding: 2em;
 }

@@ -1,19 +1,19 @@
 <div class="container">
-    <div class="menu">
-      {{#link-to "index"}}
-          <h1>
-              <em>Home</em>
-          </h1>
-      {{/link-to}}
-        <div class="links">
-          {{#link-to "account"}}
+    <div class="menu-box">
+        <div class="menu">
+          {{#link-to "index" id="home"}}
+              Home
+          {{/link-to}}
+          {{#link-to "account" id="account"}}
               Account
           {{/link-to}}
-          {{#link-to "stats"}}
+          {{#link-to "stats" id="stats"}}
               Statistics
           {{/link-to}}
-          {{#link-to "transactions"}}
-              Add new transaction
+        </div>
+        <div class="add-new-transaction">
+          {{#link-to "transactions" id="transactions"}}
+              Transaction
           {{/link-to}}
         </div>
     </div>
