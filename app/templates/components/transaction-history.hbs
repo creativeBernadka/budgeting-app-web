@@ -1,0 +1,22 @@
+<div class="single-transaction header">
+    <div>
+        Account
+    </div>
+    <div>
+        Category
+    </div>
+    <div>
+        Subcategory
+    </div>
+    <div>
+        Date
+    </div>
+    <div>
+        Amount
+    </div>
+</div>
+<div class="transactions">
+  {{#each this.transactions as |single-transaction|}}
+      <SingleTransaction @transaction={{single-transaction}} class="single-transaction"/>
+  {{/each}}
+</div>
