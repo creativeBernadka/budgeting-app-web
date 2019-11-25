@@ -1,4 +1,5 @@
 $montserrat: 'Montserrat', sans-serif;
+$small-radius: 5px;
 $dark-green: #036D19;
 $green: #81C14B;
 $dark-vanilla: #CCC9A1;
@@ -41,4 +42,21 @@ body{
   margin: 0 2em 0 2em;
   background-color: white;
   padding: 2em;
+}
+.transactions{
+  padding: 0;
+  li:nth-child(odd){
+    background-color: $cream;
+  }
+}
+
+.single-transaction{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: 1em;
+  border-radius: $small-radius;
+}
+.header{
+  font-weight: bold;
+  margin-bottom: 1em;
 }
