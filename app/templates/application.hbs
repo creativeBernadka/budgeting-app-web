@@ -1,20 +1,20 @@
 <div class="container">
     <div class="menu-box">
         <div class="menu">
-          {{#link-to "index" id="home"}}
-              Home
-          {{/link-to}}
-          {{#link-to "account" id="account"}}
-              Account
-          {{/link-to}}
-          {{#link-to "stats" id="stats"}}
-              Statistics
-          {{/link-to}}
+            <LinkTo @route="index">
+                Home
+            </LinkTo>
+            <LinkTo @route="account">
+                Account
+            </LinkTo>
+            <LinkTo @route="stats">
+                Statistics
+            </LinkTo>
         </div>
         <div class="add-new-transaction">
-          {{#link-to "transactions" id="transactions"}}
-              Transaction
-          {{/link-to}}
+            <LinkTo @route="transactions">
+                New Transaction
+            </LinkTo>
         </div>
     </div>
     <div class="body">
