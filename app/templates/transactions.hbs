@@ -15,24 +15,8 @@
         Amount
     </div>
 </div>
-<ul class="transactions">
+<div class="transactions">
   {{#each this.model as |transaction|}}
-    <li class="single-transaction">
-      <div>
-        {{transaction.account}}
-      </div>
-      <div>
-        {{transaction.category}}
-      </div>
-      <div>
-        {{transaction.subCategory}}
-      </div>
-      <div>
-        {{moment-format transaction.date 'DD.MM.YYYY'}}
-      </div>
-      <div>
-        {{transaction.amount}}
-      </div>
-    </li>
+    <SingleTransaction @transaction={{transaction}} class="single-transaction"/>
   {{/each}}
-</ul>
+</div>

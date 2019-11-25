@@ -43,9 +43,9 @@ body{
   background-color: white;
   padding: 2em;
 }
+
 .transactions{
-  padding: 0;
-  li:nth-child(odd){
+  .single-transaction:nth-child(odd){
     background-color: $cream;
   }
 }
