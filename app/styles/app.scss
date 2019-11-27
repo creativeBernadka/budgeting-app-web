@@ -1,5 +1,7 @@
 $montserrat: 'Montserrat', sans-serif;
 $small-radius: 5px;
+$small-interspace: 1em;
+$regular-interspace: 2em;
 $dark-green: #036D19;
 $green: #81C14B;
 $dark-vanilla: #CCC9A1;
@@ -14,7 +16,7 @@ body{
 
 .menu-box{
   background-color: $dark-green;
-  padding: 2em;
+  padding: $regular-interspace;
   display: grid;
   grid-template-columns: 4fr 6fr 2fr;
   a {
@@ -34,14 +36,18 @@ body{
   justify-content: space-around;
 }
 
-.add-new-transaction{
+.add-new-transaction-link{
   grid-column: -1;
 }
 
 .body{
-  margin: 0 2em 0 2em;
+  margin: 0 $regular-interspace 0 $regular-interspace;
   background-color: white;
-  padding: 2em;
+  padding: $regular-interspace;
+}
+
+.add-new-transaction{
+  padding: $small-interspace;
 }
 
 .transactions{
@@ -50,13 +56,21 @@ body{
   }
 }
 
+.input-form{
+  border: 1px solid $green;
+  display: flex;
+  justify-content: space-around;
+  padding: $small-interspace;
+  border-radius: $small-radius;
+}
+
 .single-transaction{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  padding: 1em;
+  padding: $small-interspace;
   border-radius: $small-radius;
 }
 .header{
   font-weight: bold;
-  margin-bottom: 1em;
+  margin-bottom: $small-interspace;
 }
