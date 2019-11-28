@@ -37,6 +37,7 @@ export default Controller.extend({
   }),
   selectedSubcategory: "",
   selectedDate: "",
+  selectedAmount: "",
   actions: {
     chooseAccount(account){
       this.set('selectedAccount', account)
@@ -49,6 +50,9 @@ export default Controller.extend({
     },
     chooseDate(date){
       this.set('selectedDate', date)
+    },
+    enterAmount(event){
+      this.set("selectedAmount", event.target.value);
     }
   }
 
