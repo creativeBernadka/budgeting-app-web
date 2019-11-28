@@ -36,6 +36,7 @@ export default Controller.extend({
     return subcategoryNames
   }),
   selectedSubcategory: "",
+  selectedDate: "",
   actions: {
     chooseAccount(account){
       this.set('selectedAccount', account)
@@ -46,6 +47,9 @@ export default Controller.extend({
     chooseSubcategory(subcategory){
       this.set('selectedSubcategory', subcategory)
     },
+    chooseDate(date){
+      this.set('selectedDate', date)
+    }
   }
 
 });
