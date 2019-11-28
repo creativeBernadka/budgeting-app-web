@@ -8,6 +8,7 @@ $green: #81C14B;
 $dark-vanilla: #CCC9A1;
 $cream: #F0FFCE;
 $pale-gold: #ECBA82;
+$ember-power-select-border-color: $green;
 
 body{
   font-family: $montserrat;
@@ -83,17 +84,32 @@ body{
 .transaction-input{
   padding: $small-interspace;
   border-radius: $small-radius;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $green;
   font-family: $montserrat;
 }
 
 .input-form-field{
   display: flex;
   flex-direction: column;
+  align-self: flex-end;
+  justify-content: flex-end;
   margin: $small-interspace;
 }
 
 .input-form-title{
   margin-bottom: $small-interspace;
+}
+
+.input-form-button{
+  font-family: $montserrat;
+  background-color: $green;
+  border-radius: $small-radius;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $green;
+  padding: $small-interspace;
 }
 
 @import "ember-power-select";
