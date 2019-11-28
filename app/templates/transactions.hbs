@@ -35,18 +35,31 @@
       <div class="input-form-title">
         Date
       </div>
-      {{pikaday-input onSelection=(action "chooseDate") placeholder="Date" class="transaction-input" }}
+      {{pikaday-input
+              onSelection=(action "chooseDate")
+              placeholder="Date"
+              class="transaction-input"
+              value=this.selectedDate}}
     </div>
     <div class="input-form-field">
       <div class="input-form-title">
         Amount
       </div>
-      <input class="transaction-input" placeholder="Amount" type="number" min="0" onchange={{action "enterAmount"}}>
+      {{input
+              class="transaction-input"
+              placeholder="Amount"
+              type="number" min="0"
+              onchange=(action "enterAmount")
+              value=this.selectedAmount
+      }}
     </div>
     <div class="input-form-field">
-      <button class="input-form-button">
+      <button class="input-form-button" onclick={{action "addTransaction"}}>
         ADD
       </button>
+    </div>
+    <div class="error-message">
+      {{if this.anyErrors "All fields must not be empty" ""}}
     </div>
   </div>
 </div>

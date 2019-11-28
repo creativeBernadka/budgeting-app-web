@@ -110,4 +110,11 @@ body{
   padding: $small-interspace;
 }
 
+.error-message{
+  grid-column: 1/-1;
+  color: red;
+  font-weight: bold;
+  margin: $small-interspace;
+}
+
 @import "ember-power-select";

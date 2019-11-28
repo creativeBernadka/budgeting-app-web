@@ -38,6 +38,7 @@ export default Controller.extend({
   selectedSubcategory: "",
   selectedDate: "",
   selectedAmount: "",
+  anyErrors: 0,
   actions: {
     chooseAccount(account){
       this.set('selectedAccount', account)
@@ -53,7 +54,32 @@ export default Controller.extend({
     },
     enterAmount(event){
       this.set("selectedAmount", event.target.value);
+    },
+    addTransaction(){
+      if(this.get("selectedAccount").length === 0 ||
+        this.get("selectedCategory").length === 0 ||
+        this.get("selectedDate").length === 0 ||
+        this.get("selectedAmount").length === 0
+      ){
+        this.set("anyErrors", 1)
+      }
+      else {
+
+        this.set("anyErrors", 0);
+        let transaction = this.store.createRecord('transaction', {
+          account: this.get("selectedAccount"),
+          category: this.get("selectedCategory"),
+          subcategory: this.get("selectedSubcategory"),
+          date: this.get("selectedDate"),
+          amount: this.get("selectedAmount")
+        });
+        transaction.save();
+        this.set("selectedAccount", "");
+        this.set("selectedCategory", "");
+        this.set("selectedSubcategory", "");
+        this.set("selectedDate", "");
+        this.set("selectedAmount", "");
+      }
     }
   }
-
 });
