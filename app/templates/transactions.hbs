@@ -5,7 +5,9 @@
       <div class="input-form-title">
         Account
       </div>
-      <PowerSelect @options={{this.accounts}} @onChange={{action "foo"}} as |account|>
+      <PowerSelect @selected={{this.selectedAccount}}
+                   @options={{this.accounts}}
+                   @onChange={{action "chooseAccount"}} as |account|>
         {{account}}
       </PowerSelect>
     </div>
@@ -13,7 +15,9 @@
       <div class="input-form-title">
         Category
       </div>
-      <PowerSelect @options={{this.categories}} @onChange={{action "foo"}} as |category|>
+      <PowerSelect @selected={{this.selectedCategory}}
+                   @options={{this.categories}}
+                   @onChange={{action "chooseCategory"}} as |category|>
         {{category}}
       </PowerSelect>
     </div>
@@ -21,7 +25,9 @@
       <div class="input-form-title">
         Subcategory
       </div>
-      <PowerSelect @options={{this.subcategories}} @onChange={{action "foo"}} as |subcategory|>
+      <PowerSelect @selected={{this.selectedSubcategory}}
+                   @options={{this.subcategories}}
+                   @onChange={{action "chooseSubcategory"}} as |subcategory|>
         {{subcategory}}
       </PowerSelect>
     </div>
@@ -35,7 +41,7 @@
       <div class="input-form-title">
         Amount
       </div>
-      <input class="transaction-input" placeholder="Amount" size="10">
+      <input class="transaction-input" placeholder="Amount" size="10" type="number" min="0">
     </div>
     <div class="input-form-field">
       <button class="input-form-button">

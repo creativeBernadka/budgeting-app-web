@@ -13,6 +13,7 @@ export default Controller.extend({
     });
     return accountNames
   }),
+  selectedAccount: "",
   categories: computed(function () {
     const model = this.get('model');
     let categoryNames = [];
@@ -23,6 +24,7 @@ export default Controller.extend({
     });
     return categoryNames
   }),
+  selectedCategory: "",
   subcategories: computed(function () {
     const model = this.get('model');
     let subcategoryNames = [];
@@ -33,8 +35,17 @@ export default Controller.extend({
     });
     return subcategoryNames
   }),
+  selectedSubcategory: "",
   actions: {
-    foo() {}
+    chooseAccount(account){
+      this.set('selectedAccount', account)
+    },
+    chooseCategory(category){
+      this.set('selectedCategory', category)
+    },
+    chooseSubcategory(subcategory){
+      this.set('selectedSubcategory', subcategory)
+    },
   }
 
 });
