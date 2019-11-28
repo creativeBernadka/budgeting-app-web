@@ -1,32 +1,46 @@
 <div class="add-new-transaction">
-    <h3>Add new transaction</h3>
-    <div class="input-form">
-        <div>
-          Account
-          <PowerSelect @options={{this.accounts}} @onChange={{action "foo"}} as |account|>
-            {{account}}
-          </PowerSelect>
-        </div>
-        <div>
-            Category
-          <PowerSelect @options={{this.categories}} @onChange={{action "foo"}} as |category|>
-            {{category}}
-          </PowerSelect>
-        </div>
-        <div>
-            Subcategory
-          <PowerSelect @options={{this.subcategories}} @onChange={{action "foo"}} as |subcategory|>
-            {{subcategory}}
-          </PowerSelect>
-        </div>
-        <div>
-          {{pikaday-input placeholder="Date" class="transaction-input" size="10"}}
-        </div>
-        <input class="transaction-input" placeholder="Amount" size="10">
-        <button>
-            ADD
-        </button>
+  <h3>Add new transaction</h3>
+  <div class="input-form">
+    <div class="input-form-field">
+      <div class="input-form-title">
+        Account
+      </div>
+      <PowerSelect @options={{this.accounts}} @onChange={{action "foo"}} as |account|>
+        {{account}}
+      </PowerSelect>
     </div>
+    <div class="input-form-field">
+      <div class="input-form-title">
+        Category
+      </div>
+      <PowerSelect @options={{this.categories}} @onChange={{action "foo"}} as |category|>
+        {{category}}
+      </PowerSelect>
+    </div>
+    <div class="input-form-field">
+      <div class="input-form-title">
+        Subcategory
+      </div>
+      <PowerSelect @options={{this.subcategories}} @onChange={{action "foo"}} as |subcategory|>
+        {{subcategory}}
+      </PowerSelect>
+    </div>
+    <div class="input-form-field">
+      <div class="input-form-title">
+        Date
+      </div>
+      {{pikaday-input placeholder="Date" class="transaction-input" size="10"}}
+    </div>
+    <div>
+      <div class="input-form-title">
+        Amount
+      </div>
+      <input class="transaction-input input-form-field" placeholder="Amount" size="10">
+    </div>
+      <button>
+          ADD
+      </button>
+  </div>
 </div>
 
 <TransactionHistory @transactions={{this.model}}/>
