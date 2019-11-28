@@ -2,18 +2,27 @@
     <h3>Add new transaction</h3>
     <div class="input-form">
         <div>
-            Account
+          Account
+          <PowerSelect @options={{this.accounts}} @onChange={{action "foo"}} as |account|>
+            {{account}}
+          </PowerSelect>
         </div>
         <div>
             Category
+          <PowerSelect @options={{this.categories}} @onChange={{action "foo"}} as |category|>
+            {{category}}
+          </PowerSelect>
         </div>
         <div>
             Subcategory
+          <PowerSelect @options={{this.subcategories}} @onChange={{action "foo"}} as |subcategory|>
+            {{subcategory}}
+          </PowerSelect>
         </div>
         <div>
-            Date
+          {{pikaday-input placeholder="Date" class="transaction-input" size="10"}}
         </div>
-        <input>
+        <input class="transaction-input" placeholder="Amount" size="10">
         <button>
             ADD
         </button>

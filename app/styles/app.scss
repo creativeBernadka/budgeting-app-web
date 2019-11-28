@@ -62,6 +62,7 @@ body{
   justify-content: space-around;
   padding: $small-interspace;
   border-radius: $small-radius;
+  align-items: center;
 }
 
 .single-transaction{
@@ -74,3 +75,12 @@ body{
   font-weight: bold;
   margin-bottom: $small-interspace;
 }
+
+.transaction-input{
+  padding: $small-interspace;
+  border-radius: $small-radius;
+  font-family: $montserrat;
+
+}
+
+@import "ember-power-select";
