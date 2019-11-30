@@ -55,5 +55,8 @@
   "engines": {
     "node": "8.* || >= 10.*"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@glimmer/component": "^0.13.0",
+    "@glimmer/tracking": "^0.14.0-alpha.1"
+  }
 }
