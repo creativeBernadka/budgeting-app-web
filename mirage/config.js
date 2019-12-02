@@ -107,6 +107,7 @@ export default function() {
           id: 1,
           attributes: {
             "category-name": "food",
+            "category-type": "outcome",
             "subcategories": ["home", "eating-out"]
           }
         },
@@ -115,6 +116,7 @@ export default function() {
           id: 2,
           attributes: {
             "category-name": "indulgences",
+            "category-type": "outcome",
             "subcategories": ["cinema"]
           }
         },
@@ -123,6 +125,7 @@ export default function() {
           id: 3,
           attributes: {
             "category-name": "home",
+            "category-type": "outcome",
             "subcategories": ["furniture etc", "detergents"]
           }
         },
@@ -131,6 +134,7 @@ export default function() {
           id: 4,
           attributes: {
             "category-name": "cosmetics",
+            "category-type": "outcome",
             "subcategories": []
           }
         },
@@ -139,6 +143,7 @@ export default function() {
           id: 5,
           attributes: {
             "category-name": "presents",
+            "category-type": "outcome",
             "subcategories": []
           }
         },
@@ -147,6 +152,7 @@ export default function() {
           id: 6,
           attributes: {
             "category-name": "wage",
+            "category-type": "income",
             "subcategories": []
           }
         },
@@ -155,6 +161,7 @@ export default function() {
           id: 7,
           attributes: {
             "category-name": "return money",
+            "category-type": "income",
             "subcategories": []
           }
         }
