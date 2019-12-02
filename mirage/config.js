@@ -97,5 +97,68 @@ export default function() {
        }
      ]
     }
+  });
+
+  this.get('/categories', function () {
+    return {
+      data: [
+        {
+          type: 'categories',
+          id: 1,
+          attributes: {
+            "category-name": "food",
+            "subcategories": ["home", "eating-out"]
+          }
+        },
+        {
+          type: 'categories',
+          id: 2,
+          attributes: {
+            "category-name": "indulgences",
+            "subcategories": ["cinema"]
+          }
+        },
+        {
+          type: 'categories',
+          id: 3,
+          attributes: {
+            "category-name": "home",
+            "subcategories": ["furniture etc", "detergents"]
+          }
+        },
+        {
+          type: 'categories',
+          id: 4,
+          attributes: {
+            "category-name": "cosmetics",
+            "subcategories": []
+          }
+        },
+        {
+          type: 'categories',
+          id: 5,
+          attributes: {
+            "category-name": "presents",
+            "subcategories": []
+          }
+        },
+        {
+          type: 'categories',
+          id: 6,
+          attributes: {
+            "category-name": "wage",
+            "subcategories": []
+          }
+        },
+        {
+          type: 'categories',
+          id: 7,
+          attributes: {
+            "category-name": "return money",
+            "subcategories": []
+          }
+        }
+      ]
+    }
   })
 }
