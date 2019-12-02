@@ -1,10 +1,10 @@
 import DS from 'ember-data';
-const { Model } = DS;
+const { Model, attr } = DS;
 
-export default Model.extend({
-  account: DS.attr(),
-  category: DS.attr(),
-  subcategory: DS.attr(),
-  date: DS.attr('date'),
-  amount: DS.attr('number')
-});
+export default class Transaction extends Model {
+  @attr account;
+  @attr category;
+  @attr subcategory;
+  @attr('date') date;
+  @attr('number') amount;
+}

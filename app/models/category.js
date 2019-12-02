@@ -1,8 +1,8 @@
 import DS from 'ember-data';
-const { Model } = DS;
+const { Model, attr } = DS;
 
-export default Model.extend( {
-  categoryName: DS.attr(),
-  categoryType: DS.attr(),
-  subcategories: DS.hasMany('string')
-})
+export default class Category extends Model {
+  @attr categoryName;
+  @attr categoryType;
+  @attr subcategories;
+}
