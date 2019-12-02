@@ -1,4 +1,4 @@
-<div class="single-transaction header">
+<div class="single-five-item-line header">
     <div>
         Account
     </div>
@@ -15,8 +15,8 @@
         Amount
     </div>
 </div>
-<div class="transactions">
+<div class="list-of-items">
   {{#each this.transactions as |single-transaction|}}
-      <SingleTransaction @transaction={{single-transaction}} class="single-transaction"/>
+      <SingleTransaction @transaction={{single-transaction}} class="single-five-item-line"/>
   {{/each}}
 </div>

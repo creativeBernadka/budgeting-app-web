@@ -53,8 +53,8 @@ body{
   padding: $regular-interspace;
 }
 
-.transactions{
-  .single-transaction:nth-child(odd){
+.list-of-items{
+  .single-five-item-line:nth-child(odd){
     background-color: $cream;
   }
 }
@@ -67,7 +67,7 @@ body{
   border-radius: $small-radius;
 }
 
-.single-transaction{
+.single-five-item-line{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   padding: $regular-interspace;

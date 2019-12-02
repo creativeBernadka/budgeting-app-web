@@ -86,7 +86,7 @@ export default function() {
        },
        {
          type: 'accounts',
-         id: '2',
+         id: '3',
          attributes: {
            "account-name": 'ING - OKO',
            "current-value": 5500,
