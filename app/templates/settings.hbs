@@ -1,1 +1,6 @@
-{{outlet}}
+<h3>Accounts</h3>
+<div class="transactions">
+  {{#each this.model as |single-account|}}
+    <SingleAccount @account={{single-account}} class="single-transaction"/>
+  {{/each}}
+</div>
