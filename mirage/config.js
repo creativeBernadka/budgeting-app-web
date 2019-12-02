@@ -1,3 +1,5 @@
+import DS from "ember-data";
+
 const data = [
   {
     type: 'transactions',
@@ -55,5 +57,45 @@ export default function() {
 
   this.post('/transactions', function (schema) {
     data.push(schema)
+  });
+
+  this.get('/accounts', function () {
+    return {
+     data: [
+       {
+         type: 'accounts',
+         id: '1',
+         attributes: {
+           "account-name": 'ING',
+           "current-value": 1000,
+           "account-type": 'checking',
+           "interest-rate": 0,
+           "currency": 'zł'
+         }
+       },
+       {
+         type: 'accounts',
+         id: '2',
+         attributes: {
+           "account-name": 'Cash',
+           "current-value": 70,
+           "account-type": 'checking',
+           "interest-rate": 0,
+           "currency": 'zł'
+         }
+       },
+       {
+         type: 'accounts',
+         id: '2',
+         attributes: {
+           "account-name": 'ING - OKO',
+           "current-value": 5500,
+           "account-type": 'savings',
+           "interest-rate": 0.7,
+           "currency": 'zł'
+         }
+       }
+     ]
+    }
   })
 }
