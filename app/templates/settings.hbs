@@ -1,7 +1,2 @@
-<h2>Accounts</h2>
-<div class="list-of-items">
-  {{#each this.model.accounts as |single-account|}}
-    <SingleAccount @account={{single-account}} class="single-five-item-line"/>
-  {{/each}}
-</div>
-<Categories @categories = {{this.model.categories}} />
+<ManageAccounts @accounts = {{this.model.accounts}} />
+<ManageCategories @categories = {{this.model.categories}} />

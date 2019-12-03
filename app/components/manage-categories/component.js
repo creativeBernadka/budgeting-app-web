@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 
-export default class CategoriesComponent extends Component {
-
+export default class ManageCategoriesComponent extends Component {
   get incomeCategories(){
     const categories = this.args.categories;
     return categories.filter( category => category.categoryType === "income")
