@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('transactions');
   this.route('settings', function() {
     this.route('manage-accounts');
+    this.route('manage-categories');
   });
 });
 
