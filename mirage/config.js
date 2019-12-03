@@ -150,7 +150,20 @@ const categories = [
 export default function() {
   this.namespace = '/api';
 
-  this.get('/transactions', function () {
+  this.get('/transactions', function (schema, request) {
+    let id = JSON.parse(JSON.stringify(request.queryParams)).id;
+    if (id) {
+      const name = accounts
+        .filter( account => account.id === id)[0]
+        .attributes["account-name"];
+      return {
+        data: transactions.filter( transaction => {
+          if (transaction.attributes.account === name){
+            return transaction
+          }
+        })
+      }
+    }
     return {
       data: transactions
     }
