@@ -8,7 +8,7 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('stats');
-  this.route('account');
+  this.route('account', {path: '/account/:account_id'});
   this.route('main');
   this.route('transactions');
   this.route('settings', function() {

@@ -166,6 +166,13 @@ export default function() {
     }
   });
 
+  this.get('/accounts/:id', (schema, request) => {
+    let id = request.params.id;
+    return {
+      data: accounts.filter(account => account.id === id)[0]
+    }
+  });
+
   this.post('/accounts', function (schema) {
     accounts.push(schema);
   });
