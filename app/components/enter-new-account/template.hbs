@@ -1,0 +1,68 @@
+<div class="input-form">
+  <div class="input-form-field">
+    <div class="input-form-title">
+      Account Name
+    </div>
+    <Input
+            class="transaction-input"
+            @placeholder="Enter name"
+            @key-up={{this.enterAccountName}}
+            @value={{this.accountName}}
+    />
+  </div>
+  <div class="input-form-field">
+    <div class="input-form-title">
+      Current Value
+    </div>
+    <Input
+            class="transaction-input"
+            type="number" min=0
+            @placeholder="Enter value"
+            @key-up={{this.enterCurrentValue}}
+            @value={{this.currentValue}}
+    />
+  </div>
+  <div class="input-form-field">
+    <div class="input-form-title">
+      Currency
+    </div>
+    <PowerSelect
+            @selected={{this.currency}}
+            @options={{this.currencies}}
+            @onChange={{action "chooseCurrency"}} as |currency|>
+      {{currency}}
+    </PowerSelect>
+  </div>
+  <div class="input-form-field">
+    <div class="input-form-title">
+      Account type
+    </div>
+    <PowerSelect
+            @selected={{this.accountType}}
+            @options={{this.accountTypes}}
+            @onChange={{action "chooseAccountType"}} as |account-type|>
+      {{account-type}}
+    </PowerSelect>
+  </div>
+  <div class="input-form-field {{this.isChecking}}">
+    <div class="input-form-title">
+      Interest rate
+    </div>
+    <Input
+            class="transaction-input"
+            type="number" min=0
+            @placeholder="0%"
+            @key-up={{this.enterInterestRate}}
+            @value={{this.interestRate}}
+            disabled={{this.isChecking}}
+    />
+  </div>
+  <div class="input-form-field">
+    <button class="input-form-button" {{on "click" this.addNewAccount}}>
+      ADD
+    </button>
+  </div>
+  <div class="error-message">
+    {{if this.anyErrors "All fields must not be empty" ""}}
+  </div>
+</div>

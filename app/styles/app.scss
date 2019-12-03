@@ -94,6 +94,9 @@ body{
   align-self: flex-end;
   justify-content: flex-end;
   margin: $small-interspace;
+  &.disabled {
+    opacity: 50%;
+  }
 }
 
 .input-form-title{
