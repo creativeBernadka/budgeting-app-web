@@ -11,7 +11,9 @@ Router.map(function() {
   this.route('account');
   this.route('main');
   this.route('transactions');
-  this.route('settings');
+  this.route('settings', function() {
+    this.route('manage-accounts');
+  });
 });
 
 export default Router;
