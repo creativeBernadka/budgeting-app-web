@@ -1,8 +1,11 @@
 import Component from '@glimmer/component';
 import {tracked} from "@glimmer/tracking";
 import {action} from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default class EnterNewAccountComponent extends Component {
+
+  @service store;
 
   @tracked accountName = "";
 
@@ -58,6 +61,22 @@ export default class EnterNewAccountComponent extends Component {
     }
     else {
       this.anyErrors = 0;
+      if (this.interestRate === ""){
+        this.interestRate = 0;
+      }
+      let transaction = this.store.createRecord('account', {
+        accountName: this.accountName,
+        currentValue: this.currentValue,
+        accountType: this.accountType,
+        interestRate: this.interestRate,
+        currency: this.currency
+      });
+      transaction.save();
+      this.accountName = "";
+      this.interestRate = "";
+      this.currentValue = "";
+      this.accountType = "checking";
+      this.currency = "PLN";
     }
   }
 
