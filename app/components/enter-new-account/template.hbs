@@ -62,7 +62,7 @@
       ADD
     </button>
   </div>
-  <div class="error-message">
-    {{if this.anyErrors "All fields must not be empty" ""}}
-  </div>
+  {{#if this.anyErrors}}
+    <ShowError/>
+  {{/if}}
 </div>
