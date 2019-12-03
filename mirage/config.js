@@ -166,9 +166,13 @@ export default function() {
     }
   });
 
+  this.post('/accounts', function (schema) {
+    accounts.push(schema);
+  });
+
   this.get('/categories', function () {
     return {
       data: categories
     }
-  })
+  });
 }
