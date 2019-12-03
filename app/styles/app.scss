@@ -117,4 +117,25 @@ body{
   margin: $small-interspace;
 }
 
+.tab-bar{
+  background-color: $cream;
+  padding: $regular-interspace 0 $regular-interspace 0;
+  border-radius: $small-radius;
+  a {
+    font-weight: bold;
+    text-decoration: none;
+    color: $dark-green;
+    padding: $regular-interspace;
+    border-radius: $small-radius;
+
+    &:hover{
+      color: $pale-gold;
+    }
+  }
+
+  .active{
+    background-color: $green;
+  }
+}
+
 @import "ember-power-select";
