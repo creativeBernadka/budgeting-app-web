@@ -20,7 +20,7 @@ body{
   background-color: $dark-green;
   padding: $big-interspace;
   display: grid;
-  grid-template-columns: 4fr 6fr 2fr;
+  grid-template-columns: 4fr 5fr 2fr;
   a {
     font-weight: bold;
     text-decoration: none;
@@ -40,7 +40,7 @@ body{
 }
 
 .add-new-transaction-link{
-  grid-column: -1;
+  grid-column: -2;
 }
 
 .body{
@@ -141,4 +141,8 @@ body{
   }
 }
 
+
+.bottom-margin{
+  margin-bottom: $regular-interspace;
+}
 @import "ember-power-select";
