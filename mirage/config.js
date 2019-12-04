@@ -44,6 +44,17 @@ const transactions = [
       date: "2019-11-24T18:25:43.511Z",
       amount: 100.00
     }
+  },
+  {
+    type: 'transactions',
+    id: 5,
+    attributes: {
+      account: "ING",
+      category: "food",
+      subcategory: "eating out",
+      date: "2019-11-24T18:25:43.511Z",
+      amount: 26.00
+    }
   }
 ];
 const accounts = [
@@ -81,6 +92,7 @@ const accounts = [
     }
   }
 ];
+
 const categories = [
   {
     type: 'categories',
@@ -170,7 +182,9 @@ export default function() {
   });
 
   this.post('/transactions', function (schema) {
-    transactions.push(schema)
+    return {
+      data: []
+    }
   });
 
   this.get('/accounts', function () {
@@ -195,4 +209,46 @@ export default function() {
       data: categories
     }
   });
+
+  this.get('/chart-data', (schema, request) => {
+    const id = JSON.parse(JSON.stringify(request.queryParams)).id;
+    if (id) {
+      const name = accounts
+        .filter( account => account.id === id)[0]
+        .attributes["account-name"];
+      const transactionsForId = transactions.filter( transaction => {
+        if (transaction.attributes.account === name){
+          return transaction.attributes
+        }
+      });
+      const labels = transactionsForId
+        .map(transaction => transaction.attributes.category)
+        .filter((value, index, self) => {
+          return self.indexOf(value) === index;
+        });
+      let values = [];
+      transactionsForId.forEach(transaction => {
+        const index = labels.indexOf(transaction.attributes.category);
+        if (values[index]){
+          values[index] = values[index] + transaction.attributes.amount;
+        }
+        else{
+          values[index] = transaction.attributes.amount;
+        }
+      });
+      return {
+        data: [{
+          type: 'chart-data',
+          id: 1,
+          attributes: {
+            labels: labels,
+            datasets: [{
+              label: "dataset",
+              data: values
+            }]
+          }
+        }]
+      }
+    }
+  })
 }
