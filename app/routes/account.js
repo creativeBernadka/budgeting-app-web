@@ -8,13 +8,18 @@ export default Route.extend({
       history: this.store.query('transaction', {id: account_id}),
       chartData: this.store.query('chart-datum', {id: account_id}),
       chartOptions: {
+        legend: {
+          display: false
+        },
         scales: {
+          xAxes: [{
+            stacked: true
+          }],
           yAxes: [{
             display: true,
+            stacked: true,
             ticks: {
-              // suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
-              // OR //
-              beginAtZero: true   // minimum value will be 0.
+              beginAtZero: true
             }
           }]
         }

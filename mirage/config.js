@@ -1,5 +1,11 @@
-import DS from "ember-data";
+function getRandColor(brightness){
 
+  // Six levels of brightness from 0 to 5, 0 being the darkest
+  const rgb = [Math.random() * 256, Math.random() * 256, Math.random() * 256];
+  const mix = [brightness*51, brightness*51, brightness*51]; //51 => 255/5
+  const mixedrgb = [rgb[0] + mix[0], rgb[1] + mix[1], rgb[2] + mix[2]].map(function(x){ return Math.round(x/2.0)})
+  return "rgb(" + mixedrgb.join(",") + ")";
+}
 const transactions = [
   {
     type: 'transactions',
@@ -7,7 +13,7 @@ const transactions = [
     attributes: {
       account: "ING",
       category: "food",
-      subcategory: "eating out",
+      subcategory: "home",
       date: "2019-11-23T18:25:43.511Z",
       amount: 23.60
     }
@@ -159,6 +165,7 @@ const categories = [
   }
 ];
 
+const colors = ['#D6E9C6', '#FAEBCC', '#EBCCD1'];
 export default function() {
   this.namespace = '/api';
 
@@ -216,36 +223,56 @@ export default function() {
       const name = accounts
         .filter( account => account.id === id)[0]
         .attributes["account-name"];
-      const transactionsForId = transactions.filter( transaction => {
+      const requestedTransactions = transactions.filter( transaction => {
         if (transaction.attributes.account === name){
           return transaction.attributes
         }
       });
-      const labels = transactionsForId
+      const labels = requestedTransactions
         .map(transaction => transaction.attributes.category)
         .filter((value, index, self) => {
           return self.indexOf(value) === index;
         });
-      let values = [];
-      transactionsForId.forEach(transaction => {
-        const index = labels.indexOf(transaction.attributes.category);
-        if (values[index]){
-          values[index] = values[index] + transaction.attributes.amount;
+      const chartDatasets = requestedTransactions.reduce((value, current) =>{
+
+        const categoryIndex = labels.indexOf(current.attributes.category);
+
+        const labelAlreadyExists =
+          value.filter( object => {
+            if (object.label === current.attributes.subcategory){
+              return object
+            }
+          });
+
+        if (labelAlreadyExists.length > 0) {
+          const currentValue = labelAlreadyExists[0].data[categoryIndex];
+          labelAlreadyExists[0].data[categoryIndex] =
+            currentValue + current.attributes.amount;
         }
-        else{
-          values[index] = transaction.attributes.amount;
+        else {
+          const data = new Array(labels.length).fill(0);
+
+          data[categoryIndex] = current.attributes.amount;
+
+          const newValue = {
+            label: current.attributes.subcategory,
+            data: data,
+            backgroundColor: getRandColor(5)
+          };
+
+          value.push(newValue);
         }
-      });
+
+        return value
+      }, []);
+
       return {
         data: [{
           type: 'chart-data',
           id: 1,
           attributes: {
             labels: labels,
-            datasets: [{
-              label: "dataset",
-              data: values
-            }]
+            datasets: chartDatasets
           }
         }]
       }
