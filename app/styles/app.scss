@@ -141,8 +141,30 @@ body{
   }
 }
 
-
 .bottom-margin{
   margin-bottom: $regular-interspace;
+}
+
+.account-display{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.account-details{
+  display: grid;
+  grid-template-columns: 15% 17% 17% 17% 17% 17%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  .account-currentValue {
+    font-size: 10vw;
+    grid-column: 2/-2;
+    grid-row: 2/-3;
+  }
+  .account-currency {
+    grid-column: -3;
+    grid-row: -3;
+  }
+  h1 {
+    grid-column: 1/-1;
+  }
 }
 @import "ember-power-select";
