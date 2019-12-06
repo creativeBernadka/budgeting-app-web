@@ -1,0 +1,17 @@
+<div ...attributes>
+  <div>
+    {{@transaction.account}}
+  </div>
+  <div>
+    {{@transaction.category}}
+  </div>
+  <div>
+    {{@transaction.subcategory}}
+  </div>
+  <div>
+    {{moment-format @transaction.date 'DD.MM.YYYY'}}
+  </div>
+  <div>
+    {{@transaction.amount}}
+  </div>
+</div>
