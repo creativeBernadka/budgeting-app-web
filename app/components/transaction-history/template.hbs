@@ -1,0 +1,22 @@
+<div class="single-five-item-line header">
+  <div>
+    Account
+  </div>
+  <div>
+    Category
+  </div>
+  <div>
+    Subcategory
+  </div>
+  <div>
+    Date
+  </div>
+  <div>
+    Amount
+  </div>
+</div>
+<div class="list-of-items">
+  {{#each @transactions as |single-transaction|}}
+    <SingleTransaction @transaction={{single-transaction}} class="single-five-item-line"/>
+  {{/each}}
+</div>
