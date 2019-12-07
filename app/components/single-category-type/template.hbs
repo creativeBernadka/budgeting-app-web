@@ -6,7 +6,15 @@
     {{#each @categories as |single-category|}}
       <SingleCategory @category={{single-category}}/>
     {{/each}}
-    <button class="single-category">
+    {{#if this.showAddField}}
+      <Input
+              class="single-category"
+              @placeholder="Enter category"
+              @enter={{fn this.enterNewCategory}}
+              @value={{this.newCategory}}
+      />
+    {{/if}}
+    <button class="single-category" {{on "click" this.showInput}}>
       <div class="title">
         ADD
       </div>
