@@ -64,14 +64,14 @@ export default class EnterNewAccountComponent extends Component {
       if (this.interestRate === ""){
         this.interestRate = 0;
       }
-      let transaction = this.store.createRecord('account', {
+      let newRecord = this.store.createRecord('account', {
         accountName: this.accountName,
         currentValue: this.currentValue,
         accountType: this.accountType,
         interestRate: this.interestRate,
         currency: this.currency
       });
-      transaction.save();
+      newRecord.save();
       this.accountName = "";
       this.interestRate = "";
       this.currentValue = "";
