@@ -1,5 +1,5 @@
 <h2>Categories</h2>
-<h3>Income</h3>
-<SingleCategoryType @categories = {{this.incomeCategories}} />
-<h3>Expense</h3>
-<SingleCategoryType @categories = {{this.outcomeCategories}} />
+<div class="categories-display">
+  <SingleCategoryType @type="Income" @categories = {{this.incomeCategories}} />
+  <SingleCategoryType @type="Expense" @categories = {{this.outcomeCategories}} />
+</div>

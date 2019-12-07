@@ -1,15 +1,15 @@
-<ul class="category-list">
-  {{#each @categories as |single-category|}}
-    <li>
-      {{single-category.categoryName}}
-    </li>
-  <ul>
-    {{#each single-category.subcategories as |single-subcategory|}}
-      <li>
+<div class="single-category">
+  <div class="title">
+    {{@category.categoryName}}
+  </div>
+  <div class="subcategories">
+    {{#each @category.subcategories as |single-subcategory|}}
+      <div class="single-subcategory">
         {{single-subcategory}}
-      </li>
+      </div>
     {{/each}}
-  </ul>
-
-  {{/each}}
-</ul>
+    <button class="single-subcategory">
+      ADD
+    </button>
+  </div>
+</div>

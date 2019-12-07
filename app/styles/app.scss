@@ -167,4 +167,77 @@ body{
     grid-column: 1/-1;
   }
 }
+
+.categories-display{
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.single-category-type{
+  border-style: solid;
+  border-radius: $small-radius;
+  border-color: $dark-green;
+  border-width: 1px;
+  margin: $regular-interspace;
+
+  .title{
+    padding: $regular-interspace;
+    font-weight: bold;
+    background-color: $dark-green;
+    color: $cream;
+    font-size: larger;
+  }
+}
+
+.categories{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  align-items: start;
+}
+
+.single-category{
+  border-style: solid;
+  border-radius: $small-radius;
+  border-color: $green;
+  border-width: 1px;
+  margin: $regular-interspace;
+
+  .title{
+    padding: $regular-interspace;
+    color: $dark-green;
+    background-color: $green;
+    font-size: large;
+  }
+}
+
+button{
+  &.single-category{
+    border-style: solid;
+    border-radius: $small-radius;
+    border-color: $green;
+    border-width: 1px;
+    background-color: $green;
+  }
+}
+
+.subcategories{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+button{
+  &.single-subcategory{
+    border-style: solid;
+    border-radius: $small-radius;
+    border-color: $cream;
+    border-width: 1px;
+  }
+}
+
+.single-subcategory{
+  border-radius: $small-radius;
+  margin: $small-interspace;
+  padding: $small-interspace;
+  background-color: $cream;
+}
 @import "ember-power-select";
