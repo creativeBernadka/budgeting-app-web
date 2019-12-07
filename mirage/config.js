@@ -105,7 +105,7 @@ const categories = [
     id: 1,
     attributes: {
       "category-name": "food",
-      "category-type": "outcome",
+      "category-type": "expense",
       "subcategories": ["home", "eating-out"]
     }
   },
@@ -114,7 +114,7 @@ const categories = [
     id: 2,
     attributes: {
       "category-name": "indulgences",
-      "category-type": "outcome",
+      "category-type": "expense",
       "subcategories": ["cinema"]
     }
   },
@@ -123,7 +123,7 @@ const categories = [
     id: 3,
     attributes: {
       "category-name": "home",
-      "category-type": "outcome",
+      "category-type": "expense",
       "subcategories": ["furniture etc", "detergents"]
     }
   },
@@ -132,7 +132,7 @@ const categories = [
     id: 4,
     attributes: {
       "category-name": "cosmetics",
-      "category-type": "outcome",
+      "category-type": "expense",
       "subcategories": []
     }
   },
@@ -141,7 +141,7 @@ const categories = [
     id: 5,
     attributes: {
       "category-name": "presents",
-      "category-type": "outcome",
+      "category-type": "expense",
       "subcategories": []
     }
   },
@@ -214,6 +214,12 @@ export default function() {
   this.get('/categories', function () {
     return {
       data: categories
+    }
+  });
+
+  this.post('/categories', function () {
+    return{
+      data: []
     }
   });
 

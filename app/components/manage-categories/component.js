@@ -8,6 +8,6 @@ export default class ManageCategoriesComponent extends Component {
 
   get outcomeCategories(){
     const categories = this.args.categories;
-    return categories.filter( category => category.categoryType === "outcome")
+    return categories.filter( category => category.categoryType === "expense")
   }
 }
