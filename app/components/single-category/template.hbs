@@ -8,7 +8,15 @@
         {{single-subcategory}}
       </div>
     {{/each}}
-    <button class="single-subcategory">
+    {{#if this.showAddField}}
+      <Input
+              class="single-subcategory"
+              @placeholder="Enter subcategory"
+              @enter={{fn this.enterNewSubcategory}}
+              @value={{this.newSubcategory}}
+      />
+    {{/if}}
+    <button class="single-subcategory" {{on "click" this.showInput}}>
       ADD
     </button>
   </div>

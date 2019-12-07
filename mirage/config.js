@@ -211,7 +211,18 @@ export default function() {
     accounts.push(schema);
   });
 
-  this.get('/categories', function () {
+  this.get('/categories',  (schema, request) => {
+    const categoryName = JSON.parse(JSON.stringify(request.queryParams)).categoryName;
+    if (categoryName) {
+      const singleCategory = categories.filter( category => {
+        if (category.attributes["category-name"] === categoryName){
+          return category
+        }
+      })[0];
+      return {
+        data: singleCategory
+      }
+    }
     return {
       data: categories
     }
