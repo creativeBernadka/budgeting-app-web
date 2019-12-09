@@ -1,17 +1,18 @@
 function getRandColor(brightness){
-
   // Six levels of brightness from 0 to 5, 0 being the darkest
   const rgb = [Math.random() * 256, Math.random() * 256, Math.random() * 256];
   const mix = [brightness*51, brightness*51, brightness*51]; //51 => 255/5
   const mixedrgb = [rgb[0] + mix[0], rgb[1] + mix[1], rgb[2] + mix[2]].map(function(x){ return Math.round(x/2.0)})
   return "rgb(" + mixedrgb.join(",") + ")";
 }
+
 const transactions = [
   {
     type: 'transactions',
     id: 1,
     attributes: {
       account: "ING",
+      "category-type": "expense",
       category: "food",
       subcategory: "home",
       date: "2019-11-23T18:25:43.511Z",
@@ -23,6 +24,7 @@ const transactions = [
     id: 2,
     attributes: {
       account: "ING",
+      "category-type": "expense",
       category: "indulgences",
       subcategory: "cinema",
       date: "2019-11-20T18:25:43.511Z",
@@ -34,6 +36,7 @@ const transactions = [
     id: 3,
     attributes: {
       account: "Cash",
+      "category-type": "expense",
       category: "stationery",
       subcategory: "",
       date: "2019-11-22T18:25:43.511Z",
@@ -45,6 +48,7 @@ const transactions = [
     id: 4,
     attributes: {
       account: "ING - OKO",
+      "category-type": "expense",
       category: "money transfer",
       subcategory: "ING",
       date: "2019-11-24T18:25:43.511Z",
@@ -56,10 +60,35 @@ const transactions = [
     id: 5,
     attributes: {
       account: "ING",
+      "category-type": "expense",
       category: "food",
       subcategory: "eating out",
       date: "2019-11-24T18:25:43.511Z",
       amount: 26.00
+    }
+  },
+  {
+    type: 'transactions',
+    id: 6,
+    attributes: {
+      account: "ING",
+      "category-type": "income",
+      category: "wage",
+      subcategory: "",
+      date: "2019-12-24T18:25:43.511Z",
+      amount: 260
+    }
+  },
+  {
+    type: 'transactions',
+    id: 7,
+    attributes: {
+      account: "Cash",
+      "category-type": "income",
+      category: "return money",
+      subcategory: "",
+      date: "2019-12-2T18:25:43.511Z",
+      amount: 100
     }
   }
 ];
@@ -165,7 +194,6 @@ const categories = [
   }
 ];
 
-const colors = ['#D6E9C6', '#FAEBCC', '#EBCCD1'];
 export default function() {
   this.namespace = '/api';
 
