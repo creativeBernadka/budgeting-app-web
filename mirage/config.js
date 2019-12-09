@@ -194,6 +194,211 @@ const categories = [
   }
 ];
 
+function getGeneralData(id){
+  let requestedTransactions = transactions;
+  let labels = [];
+  let dataset = [];
+
+  if (id) {
+    const name = accounts
+      .filter( account => account.id === id)[0]
+      .attributes["account-name"];
+
+    requestedTransactions =
+      transactions
+        .filter( transaction => {
+          if (transaction.attributes.account === name){
+            return transaction.attributes
+          }
+        })
+  }
+
+  let incomeTransactions =
+    requestedTransactions
+      .filter(transaction => {
+        if (transaction.attributes["category-type"] === "income"){
+          return transaction.attributes
+        }
+      });
+
+  let expenseTransactions =
+    requestedTransactions
+      .filter(transaction => {
+        if (transaction.attributes["category-type"] === "expense"){
+          return transaction.attributes
+        }
+      });
+
+  if (id) {
+    labels = ["income", "expense"];
+    const incomeSum =
+      incomeTransactions
+        .map(transaction => transaction.attributes.amount)
+        .reduce((a, b) => a + b, 0);
+    const expenseSum =
+      expenseTransactions
+        .map(transaction => transaction.attributes.amount)
+        .reduce((a, b) => a + b, 0);
+    dataset = [{
+      data: [incomeSum, expenseSum]
+    }]
+  }
+  else {
+    labels =
+      accounts
+        .map(account => account.attributes["account-name"]);
+
+    const incomeData = new Array(labels.length).fill(0);
+    const expenseData = new Array(labels.length).fill(0);
+
+    incomeTransactions
+      .forEach(transaction => {
+        const categoryIndex = labels.indexOf(transaction.attributes.account);
+        incomeData[categoryIndex] = incomeData[categoryIndex] + transaction.attributes.amount;
+      });
+    expenseTransactions
+      .forEach(transaction => {
+        const categoryIndex = labels.indexOf(transaction.attributes.account);
+        expenseData[categoryIndex] = expenseData[categoryIndex] + transaction.attributes.amount;
+      });
+    dataset = [
+      {
+        label: "income",
+        data: incomeData,
+        backgroundColor: '#D6E9C6' // green
+      },
+      {
+        label: "expense",
+        data: expenseData,
+        backgroundColor: '#FAEBCC' // yellow
+      }
+    ]
+  }
+
+  return [{
+    type: 'chart-data',
+    id: 1,
+    attributes: {
+      labels: labels,
+      datasets: dataset
+    }
+  }]
+}
+
+function getDatasets(transactions) {
+  const labels = transactions
+    .map(transaction => transaction.attributes.category)
+    .filter((value, index, self) => {
+      return self.indexOf(value) === index;
+    });
+
+  const data = new Array(labels.length).fill(0);
+
+  transactions.forEach(transaction => {
+    const categoryIndex = labels.indexOf(transaction.attributes.category);
+    data[categoryIndex] = data[categoryIndex] + transaction.attributes.amount;
+  });
+
+  return {
+    labels,
+    chartDatasets: [{
+      data
+    }]
+  }
+}
+
+function getStackedDatasets(transactions) {
+  const labels = transactions
+    .map(transaction => transaction.attributes.category)
+    .filter((value, index, self) => {
+      return self.indexOf(value) === index;
+    });
+
+  const chartDatasets = transactions.reduce((value, current) => {
+
+    const categoryIndex = labels.indexOf(current.attributes.category);
+
+    const labelAlreadyExists =
+      value.filter( object => {
+        if (object.label === current.attributes.subcategory){
+          return object
+        }
+      });
+
+    if (labelAlreadyExists.length > 0) {
+      const currentValue = labelAlreadyExists[0].data[categoryIndex];
+      labelAlreadyExists[0].data[categoryIndex] =
+        currentValue + current.attributes.amount;
+    }
+    else {
+      const data = new Array(labels.length).fill(0);
+
+      data[categoryIndex] = current.attributes.amount;
+
+      const newValue = {
+        label: current.attributes.subcategory,
+        data: data,
+        backgroundColor: getRandColor(5)
+      };
+
+      value.push(newValue);
+    }
+
+    return value
+  }, []);
+  return {
+    labels,
+    chartDatasets
+  }
+}
+
+function getData(id, type){
+  let labels;
+  let chartDatasets;
+
+  if (id) {
+    const name = accounts
+      .filter( account => account.id === id)[0]
+      .attributes["account-name"];
+    const requestedTransactions =
+      transactions
+        .filter( transaction => {
+          if (transaction.attributes.account === name){
+            return transaction.attributes
+          }
+        })
+        .filter( transaction => {
+          if (transaction.attributes["category-type"] === type){
+            return transaction
+          }
+        });
+    const results = getStackedDatasets(requestedTransactions);
+    labels = results.labels;
+    chartDatasets = results.chartDatasets;
+
+  }
+  else {
+    const requestedTransactions =
+      transactions
+        .filter( transaction => {
+          if (transaction.attributes["category-type"] === type){
+            return transaction.attributes
+          }
+        });
+    const results = getDatasets(requestedTransactions);
+    labels = results.labels;
+    chartDatasets = results.chartDatasets;
+  }
+  return [{
+    type: 'chart-data',
+    id: 1,
+    attributes: {
+      labels: labels,
+      datasets: chartDatasets
+    }
+  }]
+}
+
 export default function() {
   this.namespace = '/api';
 
@@ -263,64 +468,23 @@ export default function() {
   });
 
   this.get('/chart-data', (schema, request) => {
-    const id = JSON.parse(JSON.stringify(request.queryParams)).id;
-    if (id) {
-      const name = accounts
-        .filter( account => account.id === id)[0]
-        .attributes["account-name"];
-      const requestedTransactions = transactions.filter( transaction => {
-        if (transaction.attributes.account === name){
-          return transaction.attributes
-        }
-      });
-      const labels = requestedTransactions
-        .map(transaction => transaction.attributes.category)
-        .filter((value, index, self) => {
-          return self.indexOf(value) === index;
-        });
-      const chartDatasets = requestedTransactions.reduce((value, current) =>{
 
-        const categoryIndex = labels.indexOf(current.attributes.category);
+    const requestType = JSON.parse(JSON.stringify(request.queryParams)).type;
+    let data;
 
-        const labelAlreadyExists =
-          value.filter( object => {
-            if (object.label === current.attributes.subcategory){
-              return object
-            }
-          });
-
-        if (labelAlreadyExists.length > 0) {
-          const currentValue = labelAlreadyExists[0].data[categoryIndex];
-          labelAlreadyExists[0].data[categoryIndex] =
-            currentValue + current.attributes.amount;
-        }
-        else {
-          const data = new Array(labels.length).fill(0);
-
-          data[categoryIndex] = current.attributes.amount;
-
-          const newValue = {
-            label: current.attributes.subcategory,
-            data: data,
-            backgroundColor: getRandColor(5)
-          };
-
-          value.push(newValue);
-        }
-
-        return value
-      }, []);
-
-      return {
-        data: [{
-          type: 'chart-data',
-          id: 1,
-          attributes: {
-            labels: labels,
-            datasets: chartDatasets
-          }
-        }]
-      }
+    switch (requestType) {
+      case "general":
+        data = getGeneralData(JSON.parse(JSON.stringify(request.queryParams)).id);
+        break;
+      case "expense":
+        data = getData(JSON.parse(JSON.stringify(request.queryParams)).id, "expense");
+        break;
+      case "income":
+        data = getData(JSON.parse(JSON.stringify(request.queryParams)).id, "income");
     }
+
+    return {
+      data: data
+    };
   })
 }

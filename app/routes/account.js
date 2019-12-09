@@ -6,7 +6,11 @@ export default Route.extend({
     return RSVP.hash({
       accountData: this.store.findRecord('account', account_id),
       history: this.store.query('transaction', {id: account_id}),
-      chartData: this.store.query('chart-datum', {id: account_id}),
+      chartData: this.store.query('chart-datum',
+        {
+          type: "expense",
+          id: account_id
+        }),
       chartOptions: {
         legend: {
           display: false
