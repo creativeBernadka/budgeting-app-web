@@ -2,13 +2,13 @@
   <div class="title">
     {{@type}}
   </div>
-  <div class="categories">
+  <div class="categories" ...attributes>
     {{#each @categories as |single-category|}}
       <SingleCategory @category={{single-category}}/>
     {{/each}}
     {{#if this.showAddField}}
       <Input
-              class="single-category"
+              class="single-category input"
               @placeholder="Enter category"
               @enter={{fn this.enterNewCategory}}
               @value={{this.newCategory}}

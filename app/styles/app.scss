@@ -191,8 +191,16 @@ body{
 
 .categories{
   display: grid;
-  grid-template-columns: 33% 33% 33%;
   align-items: start;
+
+  &.expense{
+    grid-template-columns: 33% 33% 33%;
+  }
+
+  &.income{
+    grid-template-columns: 50% 50%;
+  }
+
 }
 
 .single-category{
@@ -203,6 +211,13 @@ body{
   margin: $regular-interspace;
 
   .title{
+    padding: $regular-interspace;
+    color: $dark-green;
+    background-color: $green;
+    font-size: large;
+  }
+
+  &.input{
     padding: $regular-interspace;
     color: $dark-green;
     background-color: $green;
@@ -239,5 +254,13 @@ button{
   margin: $small-interspace;
   padding: $small-interspace;
   background-color: $cream;
+
+  &.input{
+    border-style: solid;
+    border-width: 1px;
+    border-color: $cream;
+    width: 90%;
+    font-family: $montserrat;
+  }
 }
 @import "ember-power-select";
