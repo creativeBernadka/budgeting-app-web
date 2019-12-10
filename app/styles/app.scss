@@ -263,4 +263,62 @@ button{
     font-family: $montserrat;
   }
 }
+
+.single-account-stats{
+  display: grid;
+  grid-template-columns: 50% 5% 45%;
+  grid-template-rows: 20% 80%;
+  background-color: $cream;
+  border-radius: $small-radius;
+  padding: $regular-interspace $regular-interspace $big-interspace;
+  align-items: center;
+
+  .title{
+    grid-column: 1/-1;
+    font-size: xx-large;
+    font-weight: bold;
+    padding-left: $regular-interspace;
+    padding-top: $small-interspace;
+    padding-bottom: $small-interspace;
+  }
+
+  .bar-chart{
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .pie-chart{
+    grid-column: -2;
+  }
+}
+
+.general-stats{
+  display: grid;
+  grid-template-columns: 50% 5% 45%;
+  grid-template-rows: 15% 85%;
+  padding: $regular-interspace 0 $regular-interspace 0;
+  margin-bottom: $big-interspace;
+  justify-items: center;
+  align-items: center;
+
+  .title{
+    grid-row: 1;
+    font-weight: bold;
+    font-size: x-large;
+    padding-bottom: $small-interspace;
+
+    &.second{
+      grid-column: -2;
+    }
+  }
+
+  .bar-chart{
+    grid-column: 1;
+  }
+
+  .pie-chart{
+    grid-column: -2;
+  }
+}
+
 @import "ember-power-select";

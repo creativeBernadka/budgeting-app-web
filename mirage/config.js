@@ -194,6 +194,8 @@ const categories = [
   }
 ];
 
+let chartDataId = 1;
+
 function getGeneralData(id){
   let requestedTransactions = transactions;
   let labels = [];
@@ -274,10 +276,10 @@ function getGeneralData(id){
       }
     ]
   }
-
+  chartDataId = chartDataId + 1;
   return [{
     type: 'chart-data',
-    id: 1,
+    id: chartDataId,
     attributes: {
       labels: labels,
       datasets: dataset
@@ -389,9 +391,12 @@ function getData(id, type){
     labels = results.labels;
     chartDatasets = results.chartDatasets;
   }
+
+  chartDataId = chartDataId + 1;
+
   return [{
     type: 'chart-data',
-    id: 1,
+    id: chartDataId,
     attributes: {
       labels: labels,
       datasets: chartDatasets
