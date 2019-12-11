@@ -1,28 +1,24 @@
-<div
+<div class="current-value-list"
   {{did-insert (perform this.getAccountData)}}
 >
-  <div>
-    <div>
+  <div class="one-type-values-box">
+    <div class="title">
       Checking
     </div>
-    <div>
-      {{#if this.checkingAccounts}}
+    {{#if this.checkingAccounts}}
 
-        <AccountListDetails @accounts = {{this.checkingAccounts}}/>
+      <AccountListDetails @accounts = {{this.checkingAccounts}}/>
 
-      {{/if}}
-    </div>
+    {{/if}}
   </div>
-  <div>
-    <div>
+  <div class="one-type-values-box">
+    <div class="title">
       Savings
     </div>
-    <div>
-      {{#if this.savingsAccounts}}
+    {{#if this.savingsAccounts}}
 
-        <AccountListDetails @accounts = {{this.savingsAccounts}}/>
+      <AccountListDetails @accounts = {{this.savingsAccounts}}/>
 
-      {{/if}}
-    </div>
+    {{/if}}
   </div>
 </div>
