@@ -9,7 +9,8 @@ export default Route.extend({
       chartData: this.store.query('chart-datum',
         {
           type: "expense",
-          id: account_id
+          id: account_id,
+          stacked: true
         }),
       chartOptions: {
         legend: {
