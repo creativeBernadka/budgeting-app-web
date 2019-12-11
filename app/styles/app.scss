@@ -20,7 +20,7 @@ body{
   background-color: $dark-green;
   padding: $big-interspace;
   display: grid;
-  grid-template-columns: 4fr 5fr 2fr;
+  grid-template-columns: 4fr 5fr 3fr;
   a {
     font-weight: bold;
     text-decoration: none;
@@ -34,13 +34,19 @@ body{
   }
 }
 
-.menu{
-  display: flex;
-  justify-content: space-around;
+.menu-left{
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  align-items: center;
+  text-align: center;
 }
 
-.add-new-transaction-link{
+.menu-right{
   grid-column: -2;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  text-align: center;
 }
 
 .body{
@@ -375,6 +381,10 @@ button{
     padding: $regular-interspace;
     margin-left: $regular-interspace;
   }
+}
+
+.select-account{
+  width: 100px;
 }
 
 @import "ember-power-select";

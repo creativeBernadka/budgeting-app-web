@@ -1,26 +1,22 @@
 <div class="ember-view">
   <div class="container">
       <div class="menu-box">
-          <div class="menu">
+          <div class="menu-left">
               <LinkTo @route="index">
                   Home
               </LinkTo>
-              <LinkTo @route="account" @model="1">
-                  Account
-              </LinkTo>
+            <SelectAccount/>
               <LinkTo @route="stats">
                   Statistics
               </LinkTo>
           </div>
-          <div class="add-new-transaction-link">
-            <div class="menu">
-              <LinkTo @route="transactions">
-                New Transaction
-              </LinkTo>
-              <LinkTo @route="settings">
-                Settings
-              </LinkTo>
-            </div>
+          <div class="menu-right">
+            <LinkTo @route="transactions">
+              New Transaction
+            </LinkTo>
+            <LinkTo @route="settings">
+              Settings
+            </LinkTo>
           </div>
       </div>
       <div class="body">
