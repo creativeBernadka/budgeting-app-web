@@ -1,0 +1,28 @@
+<div
+  {{did-insert (perform this.getAccountData)}}
+>
+  <div>
+    <div>
+      Checking
+    </div>
+    <div>
+      {{#if this.checkingAccounts}}
+
+        <AccountListDetails @accounts = {{this.checkingAccounts}}/>
+
+      {{/if}}
+    </div>
+  </div>
+  <div>
+    <div>
+      Savings
+    </div>
+    <div>
+      {{#if this.savingsAccounts}}
+
+        <AccountListDetails @accounts = {{this.savingsAccounts}}/>
+
+      {{/if}}
+    </div>
+  </div>
+</div>
