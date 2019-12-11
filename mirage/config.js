@@ -407,6 +407,48 @@ function getData(id, type, stacked = false){
   }]
 }
 
+function getNetWorthData() {
+  const labels = ["lip-2019", "sierp-2019", "wrz-2019", "paz-2019", "lis-2019", "gru-2019"];
+  const chartDatasets = [
+    {
+      data: [200, 150, 350, 330, 310, 400],
+      label: "ING",
+      borderColor: getRandColor(5),
+      fill: false
+    },
+    {
+      data: [200, 150, 50, 300, 30, 400],
+      label: "Cash",
+      borderColor: getRandColor(5),
+      fill: false
+    },
+    {
+      data: [2000, 2000, 3500, 3300, 3300, 4000],
+      label: "ING-OKO",
+      borderColor: getRandColor(5),
+      fill: false
+    },
+    {
+      data: [2400, 2300, 3900, 3930, 3640, 4800],
+      label: "General",
+      borderColor: getRandColor(5),
+      borderWidth: 5,
+      fill: false
+    }
+  ];
+
+  chartDataId = chartDataId + 1;
+
+  return [{
+    type: 'chart-data',
+    id: chartDataId,
+    attributes: {
+      labels: labels,
+      datasets: chartDatasets
+    }
+  }]
+}
+
 export default function() {
   this.namespace = '/api';
 
@@ -497,6 +539,9 @@ export default function() {
           "income",
           JSON.parse(JSON.stringify(request.queryParams)).stacked
         );
+        break;
+      case "net-worth":
+        data = getNetWorthData();
     }
 
     return {
