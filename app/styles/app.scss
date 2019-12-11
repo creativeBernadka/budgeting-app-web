@@ -298,10 +298,10 @@ button{
   grid-template-rows: 15% 85%;
   padding: $regular-interspace 0 $regular-interspace 0;
   margin-bottom: $big-interspace;
-  justify-items: center;
   align-items: center;
 
   .title{
+    text-align: center;
     grid-row: 1;
     font-weight: bold;
     font-size: x-large;
