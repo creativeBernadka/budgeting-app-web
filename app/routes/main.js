@@ -5,11 +5,20 @@ export default Route.extend({
 
   model(){
     return RSVP.hash({
-      chartData: this.store.query('chart-datum',
+      pieChartData: this.store.query('chart-datum',
         {
           type: 'expense'
         }),
-      chartOptions: {
+      pieChartOptions: {
+        legend: {
+          position: 'left'
+        }
+      },
+      lineChartData: this.store.query('chart-datum',
+        {
+          type: 'net-worth'
+        }),
+      lineChartOptions: {
         legend: {
           position: 'left'
         }

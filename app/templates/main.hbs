@@ -1,5 +1,15 @@
-<AccountsValue/>
+<div class="main-display">
+  <AccountsValue class="accounts-value"/>
+  <div class="pie-chart">
+    {{#each this.model.pieChartData as |element|}}
+      {{ember-chart type="pie" data=element options=this.model.pieChartOptions}}
+    {{/each}}
+  </div>
+  <div class="line-chart">
+    {{#each this.model.lineChartData as |element|}}
+      {{ember-chart type="line" data=element options=this.model.lineChartOptions}}
+    {{/each}}
+  </div>
+</div>
 
-{{#each this.model.chartData as |element|}}
-  {{ember-chart type="pie" data=element options=this.model.chartOptions}}
-{{/each}}
+

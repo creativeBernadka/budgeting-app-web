@@ -352,4 +352,29 @@ button{
   padding: $small-interspace;
 }
 
+.main-display{
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 50% 50%;
+
+  .accounts-value{
+    grid-row: 1/-1;
+    grid-column: 1;
+  }
+
+  .pie-chart{
+    grid-column: -2;
+    grid-row: 1;
+    padding: $regular-interspace;
+    margin-left: $regular-interspace;
+  }
+
+  .line-chart{
+    grid-column: -2;
+    grid-row: -2;
+    padding: $regular-interspace;
+    margin-left: $regular-interspace;
+  }
+}
+
 @import "ember-power-select";
