@@ -354,7 +354,7 @@ function getStackedDatasets(transactions) {
   }
 }
 
-function getData(id, type){
+function getData(id, type, stacked = false){
   let labels;
   let chartDatasets;
 
@@ -374,7 +374,10 @@ function getData(id, type){
             return transaction
           }
         });
-    const results = getStackedDatasets(requestedTransactions);
+    const results =
+      stacked ?
+        getStackedDatasets(requestedTransactions)
+        : getDatasets(requestedTransactions);
     labels = results.labels;
     chartDatasets = results.chartDatasets;
 
@@ -482,10 +485,18 @@ export default function() {
         data = getGeneralData(JSON.parse(JSON.stringify(request.queryParams)).id);
         break;
       case "expense":
-        data = getData(JSON.parse(JSON.stringify(request.queryParams)).id, "expense");
+        data = getData(
+          JSON.parse(JSON.stringify(request.queryParams)).id,
+          "expense",
+          JSON.parse(JSON.stringify(request.queryParams)).stacked
+        );
         break;
       case "income":
-        data = getData(JSON.parse(JSON.stringify(request.queryParams)).id, "income");
+        data = getData(
+          JSON.parse(JSON.stringify(request.queryParams)).id,
+          "income",
+          JSON.parse(JSON.stringify(request.queryParams)).stacked
+        );
     }
 
     return {
