@@ -1,7 +1,8 @@
 <div {{did-insert (perform this.getAccounts)}}>
   {{#if this.accounts}}
     <PowerSelect
-            class="select-account"
+            @triggerClass="select-account"
+            @dropdownClass="select-dropdown"
             @selected={{this.selected}}
             @options={{this.accounts}}
             @placeholder="Account"

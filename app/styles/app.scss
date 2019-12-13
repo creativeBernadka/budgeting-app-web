@@ -384,7 +384,30 @@ button{
 }
 
 .select-account{
-  width: 100px;
+  border-style: none !important;
+  background-color: $dark-green !important;
+  font-weight: bold !important;
+  color: $cream !important;
+
+  .ember-power-select-placeholder{
+    color: $cream !important;
+  }
+
+  .ember-power-select-status-icon{
+    border-color: $cream transparent transparent transparent !important;
+  }
+
 }
+
+.select-dropdown{
+  background-color: $dark-green !important;
+  border-style: none !important;
+  color: $cream !important;
+}
+
+.ember-power-select-option[aria-current="true"]{
+  background-color: $pale-gold !important;
+}
+
 
 @import "ember-power-select";
