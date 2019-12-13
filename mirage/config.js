@@ -547,5 +547,5 @@ export default function() {
     return {
       data: data
     };
-  })
+  }, {timing: 2000})
 }
