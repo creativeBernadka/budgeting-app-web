@@ -1,21 +1,4 @@
-<div class="general-stats">
-  <div class="title">
-    Spending by account
-  </div>
-  <div class="bar-chart">
-    {{#each this.model.generalData as |element|}}
-      {{ember-chart type="horizontalBar" data=element options=this.model.barChartOptions}}
-    {{/each}}
-  </div>
-  <div class="title second">
-    Spending by category
-  </div>
-  <div class="pie-chart">
-    {{#each this.model.expenseData as |element|}}
-      {{ember-chart type="pie" data=element options=this.model.pieChartOptions}}
-    {{/each}}
-  </div>
-</div>
+<StatsPageChartsData/>
 
 {{#each this.model.accounts as |account|}}
   <SingleAccountStats

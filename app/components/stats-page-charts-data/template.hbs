@@ -1,0 +1,12 @@
+<div
+  {{did-insert this.getChartData}}
+>
+  {{#if this.chartDataInstance.isRunning}}
+    <ChartsLoading/>
+  {{/if}}
+  {{#if this.chartDataInstance.isSuccessful}}
+    <StatsPageCharts
+            @chartData={{this.chartDataInstance.value}}
+    />
+  {{/if}}
+</div>
