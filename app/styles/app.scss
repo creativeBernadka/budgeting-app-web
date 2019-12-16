@@ -411,8 +411,7 @@ button{
 
 .loading-charts{
   grid-row: 1/-1;
-  justify-content: center;
-  align-items: center;
+  align-items: end;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   margin: $regular-interspace;
@@ -424,7 +423,7 @@ button{
 .single-bar{
   height: 100%;
   background-color: $cream;
-  opacity: 50%;
+  opacity: 70%;
   margin: $small-interspace;
   animation: moving-bar 2.5s infinite;
   animation-direction: alternate;
@@ -457,6 +456,34 @@ button{
   }
   100% {
     height: 10%
+  }
+}
+
+.loading-accounts{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  min-height: 50vh;
+  height: inherit;
+
+  .big-bar{
+    width: 95%;
+    background-color: $cream;
+    opacity: 70%;
+    margin: $small-interspace;
+  }
+
+  .medium-bar{
+    width: 60%;
+    background-color: $cream;
+    opacity: 70%;
+    margin: $small-interspace;
+  }
+
+  .small-bar{
+    width: 20%;
+    background-color: $cream;
+    opacity: 70%;
+    margin: $small-interspace;
   }
 }
 

@@ -2,11 +2,14 @@
   {{did-insert this.getAccountData}}
 >
   {{#if this.accountDataInstance.isRunning}}
-    tekst
+    <AccountsValueLoading
+            class="current-value-list"
+    />
   {{/if}}
   {{#if this.accountDataInstance.isSuccessful}}
     <AccountsValue
             @accounts={{this.accountDataInstance.value}}
+            class="current-value-list"
     />
   {{/if}}
 
