@@ -469,7 +469,7 @@ export default function() {
     return {
       data: transactions
     }
-  });
+  }, {timing: 1500});
 
   this.post('/transactions', function (schema) {
     return {

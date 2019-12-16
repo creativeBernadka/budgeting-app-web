@@ -487,6 +487,15 @@ button{
   }
 }
 
+.loading-list{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  min-height: 50vh;
+  height: inherit;
+}
 
+.loading-row:nth-child(odd){
+  background-color: $cream;
+}
 
 @import "ember-power-select";

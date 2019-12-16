@@ -1,7 +1,8 @@
 <AccountOverviewData
-        @accountId={{this.model.accountId}}
+        @accountId={{this.model}}
 />
 
-
-<TransactionHistory @transactions={{this.model.history}}/>
+<TransactionHistoryData
+  @accountId={{this.model}}
+/>
 
