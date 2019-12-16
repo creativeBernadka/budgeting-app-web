@@ -1,0 +1,13 @@
+<div
+  {{did-insert this.getData}}
+>
+  {{#if this.dataInstance.isRunning}}
+    <AccountsValueLoading/>
+  {{/if}}
+  {{#if this.dataInstance.isSuccessful}}
+    <AccountOverview
+            @account={{this.dataInstance.value.account}}
+            @chartData={{this.dataInstance.value.chartData}}
+    />
+  {{/if}}
+</div>

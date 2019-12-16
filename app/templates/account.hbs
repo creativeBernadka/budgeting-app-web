@@ -1,21 +1,6 @@
-<div class="account-display bottom-margin">
-  <div class="account-details">
-    <div class="account-currentValue">
-      {{this.model.accountData.currentValue}}
-    </div>
-
-    <div class="account-currency">
-      {{this.model.accountData.currency}}
-    </div>
-
-    <h1>
-      {{this.model.accountData.accountName}}
-    </h1>
-  </div>
-  <AccountPageCharts
-          @chartData={{this.model.chartData}}
-  />
-</div>
+<AccountOverviewData
+        @accountId={{this.model.accountId}}
+/>
 
 
 <TransactionHistory @transactions={{this.model.history}}/>
