@@ -12,11 +12,9 @@
       {{this.model.accountData.accountName}}
     </h1>
   </div>
-  <div>
-    {{#each this.model.chartData as |element|}}
-      {{ember-chart type="bar" data=element options=this.model.chartOptions width=100 height=50}}
-    {{/each}}
-  </div>
+  <AccountPageCharts
+          @chartData={{this.model.chartData}}
+  />
 </div>
 
 

@@ -11,24 +11,7 @@ export default Route.extend({
           type: "expense",
           id: account_id,
           stacked: true
-        }),
-      chartOptions: {
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [{
-            stacked: true
-          }],
-          yAxes: [{
-            display: true,
-            stacked: true,
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
+        })
     })
   }
 });
