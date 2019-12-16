@@ -481,7 +481,7 @@ export default function() {
     return {
      data: accounts
     }
-  });
+  }, {timing: 1500});
 
   this.get('/accounts/:id', (schema, request) => {
     let id = request.params.id;

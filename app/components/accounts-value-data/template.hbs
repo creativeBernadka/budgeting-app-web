@@ -1,0 +1,13 @@
+<div
+  {{did-insert this.getAccountData}}
+>
+  {{#if this.accountDataInstance.isRunning}}
+    tekst
+  {{/if}}
+  {{#if this.accountDataInstance.isSuccessful}}
+    <AccountsValue
+            @accounts={{this.accountDataInstance.value}}
+    />
+  {{/if}}
+
+</div>
