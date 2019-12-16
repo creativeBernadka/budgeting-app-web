@@ -8,7 +8,9 @@ export default class AccountOverviewDataComponent extends Component {
 
   @service store;
 
-  accountId = this.args.accountId;
+  get accountId (){
+    return this.args.accountId;
+  }
 
   @tracked dataInstance;
 

@@ -1,5 +1,6 @@
 <div
   {{did-insert this.getData}}
+  {{did-update this.getData @accountId}}
 >
   {{#if this.dataInstance.isRunning}}
     <AccountsValueLoading/>
