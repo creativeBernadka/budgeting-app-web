@@ -3,23 +3,10 @@ import {task} from "ember-concurrency";
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
 import {tracked} from "@glimmer/tracking";
-import {reads} from '@ember/object/computed';
 
 export default class MainChartsDataComponent extends Component {
 
   @service store;
-
-  pieChartOptions = {
-    legend: {
-      position: 'left'
-    }
-  };
-
-  lineChartOptions = {
-    legend: {
-      position: 'left'
-    }
-  };
 
   @tracked chartDataInstance;
 

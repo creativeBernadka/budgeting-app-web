@@ -6,16 +6,9 @@
   {{/if}}
 
   {{#if this.chartDataInstance.isSuccessful}}
-    <div class="pie-chart">
-      {{#each this.chartDataInstance.value.pieChart as |element|}}
-        {{ember-chart type="pie" data=element options=this.pieChartOptions}}
-      {{/each}}
-    </div>
-    <div class="line-chart">
-      {{#each this.chartDataInstance.value.lineChart as |element| }}
-        {{ember-chart type="line" data=element options=this.lineChartOptions}}
-      {{/each}}
-    </div>
+    <MainPageCharts
+            @chartData={{this.chartDataInstance.value}}
+    />
   {{/if}}
 
 </div>

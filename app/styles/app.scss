@@ -381,12 +381,6 @@ button{
     padding: $regular-interspace;
     margin-left: $regular-interspace;
   }
-
-  .loading-charts{
-    grid-row: 1/-1;
-    justify-content: center;
-    align-items: center;
-  }
 }
 
 .select-account{
@@ -416,6 +410,9 @@ button{
 }
 
 .loading-charts{
+  grid-row: 1/-1;
+  justify-content: center;
+  align-items: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   margin: $regular-interspace;
