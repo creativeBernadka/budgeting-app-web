@@ -272,9 +272,7 @@ button{
 
 .single-account-stats{
   display: grid;
-  grid-template-columns: 50% 5% 45%;
   grid-template-rows: 20% 80%;
-  background-color: $cream;
   border-radius: $small-radius;
   padding: $regular-interspace $regular-interspace $big-interspace;
   align-items: center;
@@ -288,13 +286,35 @@ button{
     padding-bottom: $small-interspace;
   }
 
-  .bar-chart{
-    grid-column: 1;
+  .charts{
     grid-row: 2;
-  }
+    display: grid;
+    grid-template-columns: 50% 5% 45%;
+    align-items: center;
 
-  .pie-chart{
-    grid-column: -2;
+    .bar-chart{
+      grid-column: 1;
+    }
+
+    .pie-chart{
+      grid-column: -2;
+    }
+
+    .loading-charts{
+      grid-column: 1/-1;
+    }
+  }
+}
+
+.single-account-stats:nth-child(even){
+  background-color: $cream;
+
+  .charts{
+    .loading-charts{
+      .single-bar{
+        background-color: white;
+      }
+    }
   }
 }
 
