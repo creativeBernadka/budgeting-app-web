@@ -1,0 +1,13 @@
+<div
+  {{did-insert this.getData}}
+>
+  {{#if this.dataInstance.isRunning}}
+
+  {{/if}}
+  {{#if this.dataInstance.isSuccessful}}
+    <EnterTransaction
+            @accountNames={{this.dataInstance.value.accountNames}}
+            @categories={{this.dataInstance.value.categories}}
+    />
+  {{/if}}
+</div>

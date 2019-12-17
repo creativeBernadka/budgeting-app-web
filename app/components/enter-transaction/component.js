@@ -2,23 +2,30 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import {task} from "ember-concurrency";
 
 export default class EnterTransactionComponent extends Component {
 
   @service store;
 
-  get accounts(){
-    const transactions = this.args.transactions;
-    let accountNames = [];
-    transactions.forEach(item => {
-      if (accountNames.indexOf(item.account) < 0){
-        accountNames.push(item.account)
-      }
-    });
-    return accountNames
+  @tracked selectedAccount;
+  @tracked searchDataInstance;
+  @tracked accountNames = this.searchDataInstance.value.accountNames;
+
+  @action
+  getSearchData(){
+    this.searchDataInstance = this.searchData.perform();
   }
 
-  @tracked selectedAccount = "";
+  @task (function *() {
+    const accounts = yield this.store.findAll('account');
+    const categories = yield this.store.findAll('category');
+    return {
+      accountNames: accounts.map(account => account.name),
+      categories: categories
+    }
+  }) searchData;
+
 
   @action
   chooseAccount(account){

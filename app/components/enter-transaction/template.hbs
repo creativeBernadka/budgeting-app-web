@@ -1,11 +1,13 @@
-<div class="input-form">
+<div class="input-form transactions">
   <div class="input-form-field">
     <div class="input-form-title">
       Account
     </div>
-    <PowerSelect @selected={{this.selectedAccount}}
-                 @options={{this.accounts}}
-                 @onChange={{action "chooseAccount"}} as |account|>
+    <PowerSelect
+            @selected={{this.selectedAccount}}
+            @options={{@accountNames}}
+            @onChange={{action "chooseAccount"}} as |account|
+    >
       {{account}}
     </PowerSelect>
   </div>
@@ -13,20 +15,12 @@
     <div class="input-form-title">
       Category
     </div>
-    <PowerSelect @selected={{this.selectedCategory}}
-                 @options={{this.categories}}
-                 @onChange={{action "chooseCategory"}} as |category|>
+    <PowerSelect
+            @selected={{this.selectedCategory}}
+            @searchEnabled={{true}}
+            @options={{@categories}}
+            @onChange={{action "chooseCategory"}} as |category|>
       {{category}}
-    </PowerSelect>
-  </div>
-  <div class="input-form-field">
-    <div class="input-form-title">
-      Subcategory
-    </div>
-    <PowerSelect @selected={{this.selectedSubcategory}}
-                 @options={{this.subcategories}}
-                 @onChange={{action "chooseSubcategory"}} as |subcategory|>
-      {{subcategory}}
     </PowerSelect>
   </div>
   <div class="input-form-field">

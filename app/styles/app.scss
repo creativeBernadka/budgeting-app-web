@@ -71,6 +71,10 @@ body{
   grid-template-columns: 17% 17% 17% 17% 17% 15%;
   padding: $regular-interspace;
   border-radius: $small-radius;
+
+  &.transactions{
+    grid-template-columns: 17% 34% 17% 17% 16%;
+  }
 }
 
 .single-five-item-line{
