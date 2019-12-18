@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import {task} from "ember-concurrency";
 import { isEmpty } from '@ember/utils';
 
 export default class EnterTransactionComponent extends Component {
@@ -93,7 +92,7 @@ export default class EnterTransactionComponent extends Component {
 
   @action
   addTransaction(){
-    if (this.isFilled()){
+    if (this.isNotFilled()){
       this.anyErrors = 1;
     }
     else {
@@ -123,7 +122,7 @@ export default class EnterTransactionComponent extends Component {
     }
   }
 
-  isFilled(){
+  isNotFilled(){
     return isEmpty(this.selectedAccount) ||
       isEmpty(this.selectedCategory) ||
       isEmpty(this.selectedDate) ||

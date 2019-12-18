@@ -2,36 +2,36 @@ import Component from '@glimmer/component';
 import {tracked} from "@glimmer/tracking";
 import {action} from '@ember/object';
 import { inject as service } from '@ember/service';
+import { isEmpty } from '@ember/utils';
 
 export default class EnterNewAccountComponent extends Component {
 
   @service store;
 
-  @tracked accountName = "";
+  @tracked accountName;
+  @tracked currentValue;
+  @tracked currency = "PLN";
+  @tracked accountType = "checking";
+  @tracked isChecking = "disabled";
+  @tracked interestRate = "";
+  @tracked anyErrors = 0;
+  currencies = ["PLN", "GBP", "EUR", "USD"];
+  accountTypes = ["checking", "savings"];
 
   @action
   enterAccountName(name){
     this.accountName = name;
   }
 
-  @tracked currentValue = "";
-
   @action
   enterCurrentValue(value){
     this.currentValue = value;
   }
 
-  @tracked currency = "PLN";
-  currencies = ["PLN", "GBP", "EUR", "USD"];
-
   @action
   chooseCurrency(currency){
     this.currency = currency;
   }
-  @tracked accountType = "checking";
-  @tracked isChecking = "disabled";
-
-  accountTypes = ["checking", "savings"];
 
   @action
   chooseAccountType(type){
@@ -42,21 +42,14 @@ export default class EnterNewAccountComponent extends Component {
     }
   }
 
-  @tracked interestRate = "";
-
   @action
   enterInterestRate(rate){
     this.interestRate = rate;
   }
 
-  @tracked anyErrors = 0;
-
   @action
   addNewAccount(){
-    if (this.accountName === "" ||
-      this.currentValue === "" ||
-      (this.interestRate === "" && this.isChecking === "")
-    ){
+    if (this.isNotFilled()){
       this.anyErrors = 1;
     }
     else {
@@ -72,12 +65,21 @@ export default class EnterNewAccountComponent extends Component {
         currency: this.currency
       });
       newRecord.save();
-      this.accountName = "";
-      this.interestRate = "";
-      this.currentValue = "";
-      this.accountType = "checking";
-      this.currency = "PLN";
+      this.clearAll()
     }
   }
 
+  isNotFilled(){
+    return isEmpty(this.accountName) ||
+      isEmpty(this.currentValue) ||
+      (isEmpty(this.interestRate) && isEmpty(this.isChecking))
+  }
+
+  clearAll(){
+    this.accountName = "";
+    this.interestRate = "";
+    this.currentValue = "";
+    this.accountType = "checking";
+    this.currency = "PLN";
+  }
 }
