@@ -1,9 +1,7 @@
 <div
   {{did-insert this.getData}}
+  class="input-form transactions"
 >
-  {{#if this.dataInstance.isRunning}}
-
-  {{/if}}
   {{#if this.dataInstance.isSuccessful}}
     <EnterTransaction
             @accountNames={{this.dataInstance.value.accountNames}}
