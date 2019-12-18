@@ -40,23 +40,39 @@ export default class EnterTransactionDataComponent extends Component {
 
     const options = categories.reduce((options, currentCategory) => {
 
-      let newOption;
+      let newOption = [];
 
       if (isEmpty(currentCategory.subcategories)){
-        newOption = currentCategory.categoryName;
+        newOption.push({
+          name: currentCategory.categoryName,
+          isSubcategory: false,
+          parentCategory: ""
+        });
       }
       else {
-        newOption = {
-          groupName: currentCategory.categoryName,
-          options: currentCategory.subcategories
-        };
+        newOption.push({
+          name: currentCategory.categoryName,
+          isSubcategory: false,
+          parentCategory: ""
+        });
+        currentCategory.subcategories.forEach(subcategory => {
+          newOption.push({
+            name: subcategory,
+            isSubcategory: true,
+            parentCategory: currentCategory.categoryName
+          })
+        });
       }
 
       if (currentCategory.categoryType === "income"){
-        options[0].options.push(newOption)
+        newOption.forEach(option => {
+          options[0].options.push(option)
+        });
       }
       else {
-        options[1].options.push(newOption)
+        newOption.forEach(option => {
+          options[1].options.push(option)
+        });
       }
 
       return options

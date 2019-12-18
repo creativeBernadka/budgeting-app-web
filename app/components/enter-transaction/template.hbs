@@ -19,8 +19,19 @@
             @selected={{this.selectedCategory}}
             @searchEnabled={{true}}
             @options={{@categories}}
-            @onChange={{action "chooseCategory"}} as |category|>
-      {{category}}
+            @search={{this.searchCategory}}
+            @selectedItemComponent="selected-transaction-category"
+            @onChange={{action "chooseCategory"}} as |category|
+    >
+      {{#if category.isSubcategory}}
+        <div class="option-subcategory">
+          {{category.name}}
+        </div>
+      {{else}}
+        <div class="option-category">
+          {{category.name}}
+        </div>
+      {{/if}}
     </PowerSelect>
   </div>
   <div class="input-form-field">

@@ -1,0 +1,7 @@
+<div class="selected-transaction">
+  {{#if @option.isSubcategory}}
+    <strong>{{@option.parentCategory}}</strong>: {{@option.name}}
+  {{else}}
+    {{@option.name}}
+  {{/if}}
+</div>

@@ -523,4 +523,16 @@ button{
   background-color: $cream;
 }
 
+.option-category{
+  font-weight: bold;
+}
+
+.option-subcategory{
+  padding-left: $regular-interspace;
+}
+
+.selected-transaction{
+  padding-left: $small-interspace;
+}
+
 @import "ember-power-select";
