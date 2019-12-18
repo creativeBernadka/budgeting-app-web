@@ -76,15 +76,10 @@ export default class EnterTransactionComponent extends Component {
     this.selectedAccount = account;
   }
 
-
-
-
   @action
   chooseCategory(category){
     this.selectedCategory = category;
   }
-
-
 
   @action
   chooseDate(date){
@@ -98,29 +93,47 @@ export default class EnterTransactionComponent extends Component {
 
   @action
   addTransaction(){
-    if ( this.selectedAccount === "" ||
-      this.selectedCategory === "" ||
-      this.selectedDate === "" ||
-      this.selectedAmount === ""
-    ){
+    if (this.isFilled()){
       this.anyErrors = 1;
     }
     else {
-
       this.anyErrors = 0;
+      let category;
+      let subcategory;
+
+      if (this.selectedCategory.isSubcategory){
+        category = this.selectedCategory.parentCategory;
+        subcategory = this.selectedCategory.name;
+      }
+      else {
+        category = this.selectedCategory.name;
+        subcategory = "";
+      }
+
       let transaction = this.store.createRecord('transaction', {
         account: this.selectedAccount,
-        category: this.selectedCategory,
-        subcategory: this.selectedSubcategory,
+        category: category,
+        subcategory: subcategory,
         date: this.selectedDate,
         amount: this.selectedAmount
       });
+
       transaction.save();
-      this.selectedAccount = "";
-      this.selectedCategory = "";
-      this.selectedSubcategory = "";
-      this.selectedDate = "";
-      this.selectedAmount = "";
+      this.clearAll()
     }
+  }
+
+  isFilled(){
+    return isEmpty(this.selectedAccount) ||
+      isEmpty(this.selectedCategory) ||
+      isEmpty(this.selectedDate) ||
+      isEmpty(this.selectedAmount)
+  }
+
+  clearAll(){
+    this.selectedAccount = "";
+    this.selectedCategory = "";
+    this.selectedDate = "";
+    this.selectedAmount = "";
   }
 }
