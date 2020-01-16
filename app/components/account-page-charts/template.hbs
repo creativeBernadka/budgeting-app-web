@@ -1,9 +1,9 @@
 <div>
   {{#each @chartData as |element|}}
     <EmberChart
-            @type="bar"
-            @data={{element}}
-            @options={{this.chartOptions}}
+      @type="bar"
+      @data={{element}}
+      @options={{this.chartOptions}}
     />
   {{/each}}
 </div>

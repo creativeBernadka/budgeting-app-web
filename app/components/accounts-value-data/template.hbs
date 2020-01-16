@@ -3,13 +3,13 @@
 >
   {{#if this.accountDataInstance.isRunning}}
     <AccountsValueLoading
-            class="current-value-list"
+      class="current-value-list"
     />
   {{/if}}
   {{#if this.accountDataInstance.isSuccessful}}
     <AccountsValue
-            @accounts={{this.accountDataInstance.value}}
-            class="current-value-list"
+      @accounts={{this.accountDataInstance.value}}
+      class="current-value-list"
     />
   {{/if}}
 

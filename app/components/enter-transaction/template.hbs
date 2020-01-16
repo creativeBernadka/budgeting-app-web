@@ -3,9 +3,9 @@
     Account
   </div>
   <PowerSelect
-          @selected={{this.selectedAccount}}
-          @options={{@accountNames}}
-          @onChange={{action "chooseAccount"}} as |account|
+    @selected={{this.selectedAccount}}
+    @options={{@accountNames}}
+    @onChange={{action "chooseAccount"}} as |account|
   >
     {{account}}
   </PowerSelect>
@@ -15,12 +15,12 @@
     Category
   </div>
   <PowerSelect
-          @selected={{this.selectedCategory}}
-          @searchEnabled={{true}}
-          @options={{@categories}}
-          @search={{this.searchCategory}}
-          @selectedItemComponent="selected-transaction-category"
-          @onChange={{action "chooseCategory"}} as |category|
+    @selected={{this.selectedCategory}}
+    @searchEnabled={{true}}
+    @options={{@categories}}
+    @search={{this.searchCategory}}
+    @selectedItemComponent="selected-transaction-category"
+    @onChange={{action "chooseCategory"}} as |category|
   >
     {{#if category.isSubcategory}}
       <div class="option-subcategory">
@@ -38,10 +38,10 @@
     Date
   </div>
   {{pikaday-input
-          onSelection=(action "chooseDate")
-          placeholder="Date"
-          class="transaction-input"
-          value=this.selectedDate}}
+    onSelection=(action "chooseDate")
+    placeholder="Date"
+    class="transaction-input"
+    value=this.selectedDate}}
 </div>
 <div class="input-form-field">
   <div class="input-form-title">
