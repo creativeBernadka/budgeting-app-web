@@ -4,10 +4,17 @@ import {action} from '@ember/object';
 import {tracked} from "@glimmer/tracking";
 import {task} from "ember-concurrency";
 import { isEmpty } from '@ember/utils';
+import { reads } from '@ember/object/computed';
 
 export default class EnterTransactionDataComponent extends Component {
 
   @service store;
+
+  @reads ('dataInstance.value.accountNames')
+  accountNames;
+
+  @reads ('dataInstance.value.categories')
+  categories;
 
   @tracked dataInstance;
 

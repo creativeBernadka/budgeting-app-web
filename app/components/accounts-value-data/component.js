@@ -3,10 +3,14 @@ import {tracked} from "@glimmer/tracking";
 import {task} from "ember-concurrency";
 import {inject as service} from '@ember/service';
 import {action} from '@ember/object';
+import { reads } from '@ember/object/computed';
 
 export default class AccountsValueDataComponent extends Component {
 
   @service store;
+
+  @reads ('accountDataInstance.value')
+  accounts;
 
   @tracked accountDataInstance;
 
