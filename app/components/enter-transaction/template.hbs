@@ -1,62 +1,65 @@
-<div class="input-form">
-  <div class="input-form-field">
-    <div class="input-form-title">
-      Account
-    </div>
-    <PowerSelect @selected={{this.selectedAccount}}
-                 @options={{this.accounts}}
-                 @onChange={{action "chooseAccount"}} as |account|>
-      {{account}}
-    </PowerSelect>
+<div class="input-form-field">
+  <div class="input-form-title">
+    Account
   </div>
-  <div class="input-form-field">
-    <div class="input-form-title">
-      Category
-    </div>
-    <PowerSelect @selected={{this.selectedCategory}}
-                 @options={{this.categories}}
-                 @onChange={{action "chooseCategory"}} as |category|>
-      {{category}}
-    </PowerSelect>
-  </div>
-  <div class="input-form-field">
-    <div class="input-form-title">
-      Subcategory
-    </div>
-    <PowerSelect @selected={{this.selectedSubcategory}}
-                 @options={{this.subcategories}}
-                 @onChange={{action "chooseSubcategory"}} as |subcategory|>
-      {{subcategory}}
-    </PowerSelect>
-  </div>
-  <div class="input-form-field">
-    <div class="input-form-title">
-      Date
-    </div>
-    {{pikaday-input
-            onSelection=(action "chooseDate")
-            placeholder="Date"
-            class="transaction-input"
-            value=this.selectedDate}}
-  </div>
-  <div class="input-form-field">
-    <div class="input-form-title">
-      Amount
-    </div>
-    {{input
-            class="transaction-input"
-            placeholder="Amount"
-            type="number" min="0"
-            onchange=(action "enterAmount")
-            value=this.selectedAmount
-    }}
-  </div>
-  <div class="input-form-field">
-    <button class="input-form-button" onclick={{action "addTransaction"}}>
-      ADD
-    </button>
-  </div>
-  {{#if this.anyErrors}}
-    <ShowError/>
-  {{/if}}
+  <PowerSelect
+    @selected={{this.selectedAccount}}
+    @options={{@accountNames}}
+    @onChange={{action "chooseAccount"}} as |account|
+  >
+    {{account}}
+  </PowerSelect>
 </div>
+<div class="input-form-field">
+  <div class="input-form-title">
+    Category
+  </div>
+  <PowerSelect
+    @selected={{this.selectedCategory}}
+    @searchEnabled={{true}}
+    @options={{@categories}}
+    @search={{this.searchCategory}}
+    @selectedItemComponent="selected-transaction-category"
+    @onChange={{action "chooseCategory"}} as |category|
+  >
+    {{#if category.isSubcategory}}
+      <div class="option-subcategory">
+        {{category.name}}
+      </div>
+    {{else}}
+      <div class="option-category">
+        {{category.name}}
+      </div>
+    {{/if}}
+  </PowerSelect>
+</div>
+<div class="input-form-field">
+  <div class="input-form-title">
+    Date
+  </div>
+  {{pikaday-input
+    onSelection=(action "chooseDate")
+    placeholder="Date"
+    class="transaction-input"
+    value=this.selectedDate}}
+</div>
+<div class="input-form-field">
+  <div class="input-form-title">
+    Amount
+  </div>
+  {{input
+          class="transaction-input"
+          placeholder="Amount"
+          type="number" min="0"
+          onchange=(action "enterAmount")
+          value=this.selectedAmount
+  }}
+</div>
+<div class="input-form-field">
+  <button class="input-form-button" onclick={{action "addTransaction"}}>
+    ADD
+  </button>
+</div>
+{{#if this.anyErrors}}
+  <ShowError/>
+{{/if}}

@@ -1,0 +1,18 @@
+<div class="pie-chart">
+  {{#each @chartData.pieChart as |element|}}
+    <EmberChart
+      @type="pie"
+      @data={{element}}
+      @options={{this.pieChartOptions}}
+    />
+  {{/each}}
+</div>
+<div class="line-chart">
+  {{#each @chartData.lineChart as |element|}}
+    <EmberChart
+      @type="line"
+      @data={{element}}
+      @options={{this.lineChartOptions}}
+    />
+  {{/each}}
+</div>

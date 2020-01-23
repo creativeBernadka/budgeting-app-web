@@ -3,26 +3,9 @@
     {{@accountName}}
   </div>
 
-  <div class="bar-chart"
-    {{did-insert (perform this.getBarChartDataTask)}}
-  >
-
-    {{#if this.barChartData}}
-      {{#each this.barChartData as |element|}}
-        {{ember-chart type="horizontalBar" data=element options=this.barChartOptions}}
-      {{/each}}
-    {{/if}}
-  </div>
-
-  <div class="pie-chart"
-    {{did-insert (perform this.getPieChartDataTask)}}
-  >
-    {{#if this.pieChartData}}
-      {{#each this.pieChartData as |element|}}
-        {{ember-chart type="pie" data=element options=this.pieChartOptions}}
-      {{/each}}
-    {{/if}}
-  </div>
+  <SingleAccountStatsData
+    @accountId={{@accountId}}
+  />
 </div>
 
 

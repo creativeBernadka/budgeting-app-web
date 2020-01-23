@@ -1,0 +1,14 @@
+<div
+  {{did-insert this.getTransactions}}
+  {{did-update this.getTransactions @accountId}}
+>
+  <TransactionsHistoryHeader/>
+  {{#if this.transactionsInstance.isRunning}}
+    <ListLoading/>
+  {{/if}}
+  {{#if this.transactionsInstance.isSuccessful}}
+    <TransactionHistory
+      @transactions={{this.transactionsInstance.value}}
+    />
+  {{/if}}
+</div>

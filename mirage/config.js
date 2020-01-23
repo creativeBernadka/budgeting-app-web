@@ -469,7 +469,7 @@ export default function() {
     return {
       data: transactions
     }
-  });
+  }, {timing: 1500});
 
   this.post('/transactions', function (schema) {
     return {
@@ -481,7 +481,7 @@ export default function() {
     return {
      data: accounts
     }
-  });
+  }, {timing: 1500});
 
   this.get('/accounts/:id', (schema, request) => {
     let id = request.params.id;
@@ -547,5 +547,5 @@ export default function() {
     return {
       data: data
     };
-  })
+  }, {timing: 2000})
 }

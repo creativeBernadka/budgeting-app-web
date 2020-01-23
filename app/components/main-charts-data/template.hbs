@@ -1,0 +1,14 @@
+<div
+  {{did-insert this.getChartData}}
+>
+  {{#if this.chartDataInstance.isRunning}}
+    <ChartsLoading/>
+  {{/if}}
+
+  {{#if this.chartDataInstance.isSuccessful}}
+    <MainPageCharts
+      @chartData={{chartDataValue}}
+    />
+  {{/if}}
+
+</div>

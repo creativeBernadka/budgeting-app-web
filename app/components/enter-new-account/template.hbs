@@ -4,10 +4,10 @@
       Account Name
     </div>
     <Input
-            class="transaction-input"
-            @placeholder="Enter name"
-            @key-up={{this.enterAccountName}}
-            @value={{this.accountName}}
+      class="transaction-input"
+      @placeholder="Enter name"
+      @key-up={{this.enterAccountName}}
+      @value={{this.accountName}}
     />
   </div>
   <div class="input-form-field">
@@ -15,11 +15,11 @@
       Current Value
     </div>
     <Input
-            class="transaction-input"
-            type="number" min=0
-            @placeholder="Enter value"
-            @key-up={{this.enterCurrentValue}}
-            @value={{this.currentValue}}
+      class="transaction-input"
+      type="number" min=0
+      @placeholder="Enter value"
+      @key-up={{this.enterCurrentValue}}
+      @value={{this.currentValue}}
     />
   </div>
   <div class="input-form-field">
@@ -27,9 +27,10 @@
       Currency
     </div>
     <PowerSelect
-            @selected={{this.currency}}
-            @options={{this.currencies}}
-            @onChange={{action "chooseCurrency"}} as |currency|>
+      @selected={{this.currency}}
+      @options={{this.currencies}}
+      @onChange={{action "chooseCurrency"}} as |currency|
+    >
       {{currency}}
     </PowerSelect>
   </div>
@@ -38,9 +39,9 @@
       Account type
     </div>
     <PowerSelect
-            @selected={{this.accountType}}
-            @options={{this.accountTypes}}
-            @onChange={{action "chooseAccountType"}} as |account-type|>
+      @selected={{this.accountType}}
+      @options={{this.accountTypes}}
+      @onChange={{action "chooseAccountType"}} as |account-type|>
       {{account-type}}
     </PowerSelect>
   </div>
@@ -49,12 +50,12 @@
       Interest rate
     </div>
     <Input
-            class="transaction-input"
-            type="number" min=0
-            @placeholder="0%"
-            @key-up={{this.enterInterestRate}}
-            @value={{this.interestRate}}
-            disabled={{this.isChecking}}
+      class="transaction-input"
+      type="number" min=0
+      @placeholder="0%"
+      @key-up={{this.enterInterestRate}}
+      @value={{this.interestRate}}
+      disabled={{this.isChecking}}
     />
   </div>
   <div class="input-form-field">

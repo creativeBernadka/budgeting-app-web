@@ -10,10 +10,10 @@
     {{/each}}
     {{#if this.showAddField}}
       <Input
-              class="single-subcategory input"
-              @placeholder="Enter subcategory"
-              @enter={{fn this.enterNewSubcategory}}
-              @value={{this.newSubcategory}}
+        class="single-subcategory input"
+        @placeholder="Enter subcategory"
+        @enter={{fn this.enterNewSubcategory}}
+        @value={{this.newSubcategory}}
       />
     {{/if}}
     <button class="single-subcategory" {{on "click" this.showInput}}>

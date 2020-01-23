@@ -1,0 +1,16 @@
+<div
+  {{did-insert this.getAccountData}}
+>
+  {{#if this.accountDataInstance.isRunning}}
+    <AccountsValueLoading
+      class="current-value-list"
+    />
+  {{/if}}
+  {{#if this.accountDataInstance.isSuccessful}}
+    <AccountsValue
+      @accounts={{accounts}}
+      class="current-value-list"
+    />
+  {{/if}}
+
+</div>

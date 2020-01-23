@@ -1,0 +1,18 @@
+<div class="account-display bottom-margin">
+  <div class="account-details">
+    <div class="account-currentValue">
+      {{@account.currentValue}}
+    </div>
+
+    <div class="account-currency">
+      {{@account.currency}}
+    </div>
+
+    <h1>
+      {{@account.accountName}}
+    </h1>
+  </div>
+  <AccountPageCharts
+    @chartData={{@chartData}}
+  />
+</div>

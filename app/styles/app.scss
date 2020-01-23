@@ -71,6 +71,10 @@ body{
   grid-template-columns: 17% 17% 17% 17% 17% 15%;
   padding: $regular-interspace;
   border-radius: $small-radius;
+
+  &.transactions{
+    grid-template-columns: 17% 34% 17% 17% 16%;
+  }
 }
 
 .single-five-item-line{
@@ -272,9 +276,7 @@ button{
 
 .single-account-stats{
   display: grid;
-  grid-template-columns: 50% 5% 45%;
   grid-template-rows: 20% 80%;
-  background-color: $cream;
   border-radius: $small-radius;
   padding: $regular-interspace $regular-interspace $big-interspace;
   align-items: center;
@@ -288,13 +290,35 @@ button{
     padding-bottom: $small-interspace;
   }
 
-  .bar-chart{
-    grid-column: 1;
+  .charts{
     grid-row: 2;
-  }
+    display: grid;
+    grid-template-columns: 50% 5% 45%;
+    align-items: center;
 
-  .pie-chart{
-    grid-column: -2;
+    .bar-chart{
+      grid-column: 1;
+    }
+
+    .pie-chart{
+      grid-column: -2;
+    }
+
+    .loading-charts{
+      grid-column: 1/-1;
+    }
+  }
+}
+
+.single-account-stats:nth-child(even){
+  background-color: $cream;
+
+  .charts{
+    .loading-charts{
+      .single-bar{
+        background-color: white;
+      }
+    }
   }
 }
 
@@ -384,7 +408,131 @@ button{
 }
 
 .select-account{
-  width: 100px;
+  border-style: none !important;
+  background-color: $dark-green !important;
+  font-weight: bold !important;
+  color: $cream !important;
+
+  .ember-power-select-placeholder{
+    color: $cream !important;
+  }
+
+  .ember-power-select-status-icon{
+    border-color: $cream transparent transparent transparent !important;
+  }
+
+}
+
+.select-dropdown{
+  background-color: $dark-green !important;
+  border-style: none !important;
+  color: $cream !important;
+}
+
+.ember-power-select-option[aria-current="true"]{
+  background-color: $pale-gold !important;
+}
+
+.loading-charts{
+  grid-row: 1/-1;
+  align-items: end;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: $regular-interspace;
+  min-height: 50vh;
+  height: inherit;
+  width: 50vw;
+  margin: $regular-interspace auto;
+}
+
+.single-bar{
+  height: 100%;
+  background-color: $cream;
+  opacity: 70%;
+  margin: $small-interspace;
+  animation: moving-bar 2.5s infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
+#first-bar{
+  animation-delay: 0s;
+}
+
+#second-bar{
+  animation-delay: 0.5s;
+}
+
+#third-bar{
+  animation-delay: 1s;
+}
+
+#fourth-bar{
+  animation-delay: 1.5s;
+}
+
+#fifth-bar{
+  animation-delay: 2s;
+}
+
+@keyframes moving-bar {
+  0% {
+    height: 100%
+  }
+  100% {
+    height: 10%
+  }
+}
+
+.loading-accounts{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  min-height: 50vh;
+  height: inherit;
+
+  .big-bar{
+    width: 95%;
+    background-color: $cream;
+    opacity: 70%;
+    margin: $small-interspace;
+  }
+
+  .medium-bar{
+    width: 60%;
+    background-color: $cream;
+    opacity: 70%;
+    margin: $small-interspace;
+  }
+
+  .small-bar{
+    width: 20%;
+    background-color: $cream;
+    opacity: 70%;
+    margin: $small-interspace;
+  }
+}
+
+.loading-list{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  min-height: 50vh;
+  height: inherit;
+}
+
+.loading-row:nth-child(odd){
+  background-color: $cream;
+}
+
+.option-category{
+  font-weight: bold;
+}
+
+.option-subcategory{
+  padding-left: $regular-interspace;
+}
+
+.selected-transaction{
+  padding-left: $small-interspace;
 }
 
 @import "ember-power-select";

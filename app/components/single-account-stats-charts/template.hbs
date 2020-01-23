@@ -1,0 +1,19 @@
+<div class="bar-chart">
+  {{#each @chartData.barChartData as |element|}}
+    <EmberChart
+      @type="horizontalBar"
+      @data={{element}}
+      @options={{this.barChartOptions}}
+    />
+  {{/each}}
+</div>
+
+<div class="pie-chart">
+  {{#each @chartData.pieChartData as |element|}}
+    <EmberChart
+      @type="pie"
+      @data={{element}}
+      @options={{this.pieChartOptions}}
+    />
+  {{/each}}
+</div>

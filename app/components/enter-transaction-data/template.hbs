@@ -1,0 +1,11 @@
+<div
+  {{did-insert this.getData}}
+  class="input-form transactions"
+>
+  {{#if this.dataInstance.isSuccessful}}
+    <EnterTransaction
+      @accountNames={{accountNames}}
+      @categories={{categories}}
+    />
+  {{/if}}
+</div>

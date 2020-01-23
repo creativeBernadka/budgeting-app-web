@@ -8,10 +8,10 @@
     {{/each}}
     {{#if this.showAddField}}
       <Input
-              class="single-category input"
-              @placeholder="Enter category"
-              @enter={{fn this.enterNewCategory}}
-              @value={{this.newCategory}}
+        class="single-category input"
+        @placeholder="Enter category"
+        @enter={{fn this.enterNewCategory}}
+        @value={{this.newCategory}}
       />
     {{/if}}
     <button class="single-category" {{on "click" this.showInput}}>
